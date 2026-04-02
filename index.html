@@ -63,6 +63,21 @@
             box-shadow: none !important;
         }
 
+        /* モバイル対応：全体的な文字サイズとレイアウトの微調整 */
+        @media (max-width: 768px) {
+            #slide-title { font-size: 1.25rem !important; margin-bottom: 0.5rem !important; min-height: auto !important; }
+            #slide-content { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+            .bubble { padding: 12px !important; margin: 8px 0 !important; border-width: 2px !important; border-radius: 12px !important; }
+            #slide-content p { font-size: 1rem !important; line-height: 1.6 !important; }
+            #slide-content strong { font-size: 1.1rem !important; }
+            /* ページ内の特定クラスの強制上書き */
+            .text-5xl { font-size: 1.75rem !important; }
+            .text-3xl { font-size: 1.25rem !important; }
+            .text-2xl { font-size: 1.1rem !important; }
+            .text-xl { font-size: 1rem !important; }
+            .text-lg { font-size: 0.9rem !important; }
+        }
+
         /* ゆるふわ: バブル (manifest contentから利用) */
         .bubble {
             background-color: #fff;
@@ -82,7 +97,7 @@
             font-weight: 700;
         }
         
-        /* モバイル対応：バブル内の文字サイズ調整 */
+        /* モバイル対応：バブル内の文字サイズ調整とプロンプターの改善 */
         @media (max-width: 768px) {
             #slide-content .bubble { padding: 12px; margin: 8px 0; }
             #slide-content .text-5xl { font-size: 1.875rem !important; line-height: 2.25rem !important; }
@@ -90,20 +105,29 @@
             #slide-content .text-2xl { font-size: 1.25rem !important; line-height: 1.75rem !important; }
             #slide-content .text-lg { font-size: 0.875rem !important; line-height: 1.25rem !important; }
             #slide-content .bubble-pink p, #slide-content .bubble-yellow p { font-size: 1rem !important; }
+            
+            /* プロンプター内のヘッダー調整 */
+            #prompter-box h1 { font-size: 1.25rem !important; margin-top: 1rem !important; }
+            #prompter-box h2 { font-size: 1.15rem !important; margin-top: 0.8rem !important; }
+            #prompter-box h3 { font-size: 1.05rem !important; margin-top: 0.6rem !important; }
+            #prompter-box p { font-size: 1rem !important; padding-right: 3.5rem !important; } /* ボタン回避用余白 */
+            
+            /* 強制非表示設定 */
+            .mobile-hidden { display: none !important; }
         }
     </style>
 </head>
 <body class="h-screen flex flex-col overflow-hidden text-gray-800">
 
     <!-- Top Navigation & Episode Selector -->
-    <div class="flex-none bg-slate-900 px-6 py-2 flex justify-between items-center text-white shadow-lg z-50">
-        <div class="flex items-center gap-4">
-            <span class="text-blue-400 font-black tracking-widest text-lg">ゆる量子力学ラジオ</span>
-            <select id="episode-list" class="bg-slate-800 border border-slate-700 rounded-md px-3 py-1 text-sm text-blue-100 outline-none focus:ring-2 focus:ring-blue-500">
+    <div class="flex-none bg-slate-900 px-4 md:px-6 py-2 flex justify-between items-center text-white shadow-lg z-50">
+        <div class="flex items-center gap-2 md:gap-4 overflow-hidden">
+            <span class="mobile-hidden md:inline text-blue-400 font-black tracking-widest text-lg shrink-0">ゆる量子力学ラジオ</span>
+            <select id="episode-list" class="bg-slate-800 border border-slate-700 rounded-md px-2 md:px-3 py-1 text-xs md:text-sm text-blue-100 outline-none focus:ring-2 focus:ring-blue-500 max-w-[200px] md:max-w-none">
                 <option value="">エピソードを選択中...</option>
             </select>
         </div>
-        <div id="slide-counter" class="text-slate-400 font-bold text-sm tracking-tighter">0 / 0</div>
+        <div id="slide-counter" class="text-slate-400 font-bold text-xs md:text-sm tracking-tighter shrink-0">0 / 0</div>
     </div>
 
     <!-- Progress Bar -->
@@ -112,20 +136,20 @@
     </div>
     
     <!-- Slide View Area (60% height) -->
-    <div class="slide-area flex-[60] min-h-0 w-full flex justify-center items-start pt-4 px-4 md:pt-10 md:px-8 pb-8 shadow-sm border-b-2 border-gray-100 overflow-hidden">
+    <div class="slide-area flex-[60] min-h-0 w-full flex justify-center items-start pt-4 px-4 md:pt-10 md:px-8 pb-4 md:pb-8 shadow-sm border-b-2 border-gray-100 overflow-hidden bg-white/50 backdrop-blur-sm">
         <div class="w-full max-w-6xl h-full flex flex-col justify-start items-center relative">
             
-            <h1 id="slide-title" class="text-xl md:text-3xl font-bold mb-2 md:mb-8 text-gray-700 text-left w-full pb-2 md:pb-4 shrink-0 min-h-[3rem] md:min-h-[5rem] flex items-center">
+            <h1 id="slide-title" class="text-xl md:text-3xl font-bold mb-2 md:mb-8 text-gray-700 text-left w-full pb-2 md:pb-4 shrink-0 flex items-center border-b border-gray-100">
                 タイトル
             </h1>
             
-            <div class="flex flex-col md:flex-row w-full flex-1 min-h-0 justify-between items-center gap-4 md:gap-12 overflow-hidden">
-                <div id="slide-content" class="w-full md:w-3/5 h-auto md:h-full flex flex-col justify-center text-lg md:text-3xl leading-relaxed font-medium px-2 md:px-6 text-gray-700 overflow-y-auto">
+            <div class="flex flex-col md:flex-row w-full flex-1 min-h-0 justify-between items-stretch gap-4 md:gap-12 overflow-hidden">
+                <div id="slide-content" class="w-full md:w-3/5 flex flex-col justify-center text-lg md:text-3xl leading-relaxed font-medium px-0 md:px-6 text-gray-700 overflow-y-auto">
                     <!-- 内容がここに挿入されます -->
                 </div>
-                <div class="img-placeholder w-full md:w-2/5 h-1/2 md:h-full flex flex-col justify-center items-center p-0 relative group shrink-0">
-                    <img id="slide-img" src="" class="hidden w-auto h-auto max-w-full max-h-full object-contain mx-auto" style="filter: multiply; mix-blend-mode: multiply;" />
-                    <p id="slide-img-desc" class="text-gray-400 text-xs md:text-base whitespace-pre-wrap text-center italic leading-relaxed">
+                <div class="img-placeholder w-full md:w-2/5 flex flex-col justify-center items-center p-0 relative group shrink-0 min-h-0">
+                    <img id="slide-img" src="" class="hidden max-w-full max-h-[150px] md:max-h-full object-contain mx-auto" style="filter: multiply; mix-blend-mode: multiply;" />
+                    <p id="slide-img-desc" class="text-gray-400 text-xs md:text-base whitespace-pre-wrap text-center italic leading-relaxed py-2">
                         [画像指示文]
                     </p>
                 </div>
@@ -137,14 +161,14 @@
     <div class="flex-[40] min-h-0 w-full bg-slate-900 flex justify-center py-4 px-6 md:py-6 md:px-10 relative overflow-hidden">
         <div class="absolute top-1 left-4 md:top-2 md:left-6 text-blue-400 font-bold text-[8px] md:text-[10px] tracking-[0.3em] opacity-40 uppercase">Voice Over Script / 語り用台本</div>
         <div id="prompter-box" class="prompter-container w-full max-w-5xl h-full overflow-y-auto px-2 md:px-4 pb-12 md:pb-16 pt-2 md:pt-4">
-            <p id="slide-script" class="text-white text-lg md:text-2xl leading-loose font-medium tracking-wide">
+            <p id="slide-script" class="text-white text-base md:text-2xl leading-loose font-medium tracking-wide">
                 <!-- 原稿がここに挿入されます -->
             </p>
         </div>
         <!-- 浮遊ナビゲーションボタン（スマホ用） -->
-        <div class="fixed bottom-24 right-4 flex gap-3 z-[100] md:hidden">
-            <button onclick="prevSlide()" class="w-12 h-12 rounded-full bg-black/50 border border-white/30 text-white text-xl flex items-center justify-center shadow-lg active:scale-95 backdrop-blur-sm">←</button>
-            <button onclick="nextSlide()" class="w-12 h-12 rounded-full bg-black/50 border border-white/30 text-white text-xl flex items-center justify-center shadow-lg active:scale-95 backdrop-blur-sm">→</button>
+        <div class="fixed bottom-6 right-4 flex gap-3 z-[100] md:hidden">
+            <button onclick="prevSlide()" class="w-12 h-12 rounded-full bg-slate-800/90 border border-slate-600 text-white text-xl flex items-center justify-center shadow-2xl active:scale-95 backdrop-blur-md">←</button>
+            <button onclick="nextSlide()" class="w-12 h-12 rounded-full bg-blue-600/90 border border-blue-400 text-white text-xl flex items-center justify-center shadow-2xl active:scale-95 backdrop-blur-md">→</button>
         </div>
     </div>
 
