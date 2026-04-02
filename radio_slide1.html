@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆる量子力学ラジオ #1 - プレゼン資料</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f7f4;
+            --slide-bg: #ffffff;
+            --text-main: #4a4a4a;
+            --text-light: #7a7a7a;
+            --accent: #ff9fb2;
+            --accent-blue: #8fd3f4;
+            --accent-yellow: #ffe066;
+            --border: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#d1e8df 2px, transparent 2px);
+            background-size: 30px 30px;
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            padding: 40px 0;
+            place-items: center;
+        }
+
+        .slide-container {
+            background-color: var(--slide-bg);
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Zen Maru Gothic', sans-serif;
+            height: 720px;
+            overflow: hidden;
+            padding: 60px 80px;
+            position: relative;
+            width: 1280px;
+            border: 4px solid #fff;
+            outline: 3px dashed var(--accent-blue);
+            outline-offset: -10px;
+        }
+
+        h1, h2, h3 { font-weight: 700; margin: 0; color: var(--text-main); text-align: center; }
+
+        .slide-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+        
+        .slide-title::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: -10px;
+            right: 0;
+            height: 15px;
+            background-color: var(--accent-yellow);
+            z-index: -1;
+            border-radius: 10px;
+            transform: rotate(-1deg);
+        }
+
+        p, li { font-size: 24px; line-height: 1.8; color: var(--text-main); font-weight: 500; }
+
+        .content-area { display: flex; flex-direction: column; flex-grow: 1; justify-content: center; width: 100%; }
+
+        .title-layout { height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .title-layout h1 { font-size: 72px; margin-bottom: 20px; text-shadow: 3px 3px 0px var(--accent-blue); }
+        .title-layout p { font-size: 30px; background: var(--accent); color: white; padding: 10px 20px; border-radius: 20px; transform: rotate(2deg); }
+
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+
+        .image-container {
+            width: 100%;
+            height: 340px;
+            background: #fafafa;
+            border-radius: 20px;
+            box-shadow: 5px 5px 0px var(--border);
+            border: 3px solid var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        .bubble { background-color: #fff; border: 3px solid var(--text-main); border-radius: 20px; padding: 20px; position: relative; box-shadow: 4px 4px 0px var(--accent-blue); margin: 20px 0; }
+
+        .table-yuru { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
+        .table-yuru th, .table-yuru td { padding: 15px 20px; border: none; background: #f9f9f9; }
+        .table-yuru th { background: var(--accent-blue); color: white; border-radius: 10px; }
+        .table-yuru td { border-radius: 10px; border: 2px solid var(--border); }
+
+        .caption { text-align: center; font-size: 18px; color: var(--text-light); margin-top: 15px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <div class="title-layout">
+        <p style="background: none; color: var(--text-main); transform: none; margin-bottom: 10px;">📻 配信中...</p>
+        <h1>ゆる量子力学ラジオ</h1>
+        <p>第1回：宇宙の仕様変更と予言の解体</p>
+        <div style="font-size: 22px; margin-top: 40px; color: var(--text-light);">パーソナリティ：Dokuo（休職中のエンジニア）</div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">自己紹介：Dokuoです</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="image-container">
+                    <img src="./img/slide2.png" alt="エアフライヤー">
+                </div>
+                <div class="caption">絶賛稼働中のエアフライヤー</div>
+            </div>
+            <div>
+                <div class="bubble">
+                    <p style="margin:0;"><strong>ITエンジニア / 物性物理学修士</strong><br>
+                    適応障害で休職中。時間は無限にある。<br>
+                    最近の趣味：「エアフライヤーによる鶏胸肉調理の最適化」</p>
+                </div>
+                <p>「物理を学んだ人間っていうのは、休みの日まで『この現象を支配しているパラメータは何だ？』って考えちゃう、悲しい性を持っているんです（笑）」</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">物理学って何？ ＝ 未来予言の技術</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>もし皆さんが『神の視点』を持っていて、風向きや火薬の量など、あらゆるデータが手元にあったらどうなるか。</p>
+                <div class="bubble" style="box-shadow: 4px 4px 0px var(--accent-yellow);">
+                    <p style="margin:0; text-align:center;">引き金を引く前に、<br>結果は<strong>「確定」</strong>している！</p>
+                </div>
+                <p>物理学者は、宇宙という計算機の出力を完璧に読み解く『全知全能の占い師』を目指していた。</p>
+            </div>
+            <div>
+                <div class="image-container">
+                    <img src="./img/slide3.png" alt="弾道計算">
+                </div>
+                <div class="caption">当たる場所は計算通り</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">ミクロの絶望：予言が外れる日</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="image-container">
+                    <img src="./img/slide4.png" alt="二重スリット実験">
+                </div>
+                <div class="caption">二重スリット実験</div>
+            </div>
+            <div>
+                <p>弾丸を「電子」に替えて、全く同じ条件で1発だけ撃つ。</p>
+                <div class="bubble" style="box-shadow: 4px 4px 0px var(--accent);">
+                    <p style="margin:0; text-align:center;">1発目は右。<br>2発目は左。<br><strong>…どこに行くか誰にも分からない！</strong></p>
+                </div>
+                <p>物理学者が磨き上げてきた「予言」が、ミクロの世界でボロボロにされた瞬間。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">諦めと妥協：ソシャゲ運営の視点</h2>
+    <div class="content-area">
+        <p>「1発の行方を当てるのは無理だ。諦めよう。でも、<strong>全体の分布</strong>なら完璧にコントロールできる」</p>
+        <p>個別のユーザーがガチャで何を引くかは分からない。でも、100万人が引いた時の利益はコンマ数％の誤差もなく予言できる。量子力学はこれと同じ。</p>
+        <div style="margin-top: 20px;">
+            <div class="image-container" style="height: 250px; width: 60%; margin: 0 auto;">
+                <img src="./img/slide5.png" alt="統計分布">
+            </div>
+            <div class="caption">確率の波は数式通りに動く</div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">シュレディンガーの猫（盛大にスベった）</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>「おい、お前らの言う通りなら、猫は生きてると同時に死んでることになっちまうぞ！ そんなのアリか！」</p>
+                <p>…という、渾身の<strong>皮肉（ツッコミ）</strong>だった。</p>
+                <p>なのに現代では「魔法みたい！不思議！」と消費されてしまい、生みの親を絶望させた。</p>
+            </div>
+            <div>
+                <div class="image-container">
+                    <img src="./img/slide6.png" alt="シュレディンガーの猫">
+                </div>
+                <div class="caption">ただの皮肉だったのに…</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">まとめ：魔法じゃなくて、ただの物理</h2>
+    <div class="content-area">
+        <table class="table-yuru">
+            <tr>
+                <th>現象</th>
+                <th>物理の世界（How）</th>
+                <th>みんなが求めるもの（Why）</th>
+            </tr>
+            <tr>
+                <td><strong>ダイラタンシー</strong><br><span style="font-size:16px;">(叩くと固まる液体)</span></td>
+                <td>分散系の物理</td>
+                <td>「へー、面白いね」<br><span style="font-size:16px;">※人生の意味は聞かれない</span></td>
+            </tr>
+            <tr>
+                <td><strong>量子力学</strong></td>
+                <td>確率分布の計算</td>
+                <td><strong style="color:var(--accent)">「宇宙の愛！」「意識の力！」</strong><br><span style="font-size:16px;">※なぜか特別扱いされる</span></td>
+            </tr>
+        </table>
+        <p style="text-align: center; margin-top: 30px;">
+            量子力学に人生の意味を求めなくていい。<br>
+            「宇宙の仕様って変だな〜」とゆるく受け入れるのが一番です🍵
+        </p>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="title-layout">
+        <h2>ご清聴ありがとうございました</h2>
+        <p style="background:none; color:var(--text-main); transform:none;">次回：不確定性原理 〜宇宙の解像度〜</p>
+        <div style="font-size: 24px; margin-top: 40px;">おやすみなさい。良い夢を。</div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆる量子力学ラジオ プロンプターツール</title>
+    
+    <!-- Google Fonts: Zen Maru Gothic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: #f4f7f6;
+        }
+        .prompter-container::-webkit-scrollbar {
+            width: 10px;
+        }
+        .prompter-container::-webkit-scrollbar-thumb {
+            background-color: #1e293b;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden text-gray-800">
+
+    <!-- Top Navigation & Episode Selector -->
+    <div class="flex-none bg-slate-900 px-6 py-2 flex justify-between items-center text-white shadow-lg z-50">
+        <div class="flex items-center gap-4">
+            <span class="text-blue-400 font-black tracking-widest text-lg">ゆる量子力学ラジオ</span>
+            <select id="episode-list" class="bg-slate-800 border border-slate-700 rounded-md px-3 py-1 text-sm text-blue-100 outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">エピソードを選択中...</option>
+            </select>
+        </div>
+        <div id="slide-counter" class="text-slate-400 font-bold text-sm tracking-tighter">0 / 0</div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="flex-none w-full bg-gray-200 h-1">
+        <div id="progress-bar" class="bg-blue-500 h-1 transition-all duration-300 w-0"></div>
+    </div>
+    
+    <!-- Slide View Area (60% height) -->
+    <div class="flex-[60] min-h-0 w-full flex justify-center items-start pt-10 px-8 pb-8 bg-white shadow-sm border-b-2 border-gray-100 overflow-hidden">
+        <div class="w-full max-w-6xl h-full flex flex-col justify-start items-center relative">
+            
+            <h1 id="slide-title" class="text-4xl font-bold mb-10 text-blue-900 text-center w-full border-b-2 border-blue-50 pb-4 shrink-0 min-h-[6rem] flex items-center justify-center">
+                タイトル
+            </h1>
+            
+            <div class="flex w-full flex-1 min-h-0 justify-between items-center gap-12 overflow-hidden">
+                <div id="slide-content" class="w-2/3 h-full flex flex-col justify-center text-3xl leading-relaxed font-medium px-6 text-gray-700 overflow-y-auto">
+                    <!-- 内容がここに挿入されます -->
+                </div>
+                <div class="w-1/3 h-full flex flex-col justify-center items-center bg-gray-50 border-2 border-dashed border-gray-200 rounded-3xl p-8 shadow-inner relative group shrink-0">
+                    <img id="slide-img" src="" class="hidden w-full max-h-full object-contain mx-auto drop-shadow-2xl rounded-2xl transition-transform duration-500 group-hover:scale-105" />
+                    <p id="slide-img-desc" class="text-gray-400 text-base whitespace-pre-wrap text-center italic leading-relaxed">
+                        [画像指示文]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prompter View Area (40% height) -->
+    <div class="flex-[40] min-h-0 w-full bg-slate-900 flex justify-center py-6 px-10 relative overflow-hidden">
+        <div class="absolute top-2 left-6 text-blue-400 font-bold text-[10px] tracking-[0.3em] opacity-40 uppercase">Voice Over Script / 語り用台本</div>
+        <div id="prompter-box" class="prompter-container w-full max-w-5xl h-full overflow-y-auto px-4 pb-16 pt-4">
+            <p id="slide-script" class="text-white text-2xl leading-loose font-medium tracking-wide">
+                <!-- 原稿がここに挿入されます -->
+            </p>
+        </div>
+    </div>
+
+    <!-- データ管理レイヤー (ローカルCORS制限回避) -->
+    <script src="./episodes_list.js"></script>
+    
+    <!-- Application Logic -->
+    <script>
+        let currentSlide = 0;
+        let currentPath = "";
+
+        const elTitle = document.getElementById('slide-title');
+        const elContent = document.getElementById('slide-content');
+        const elImgDesc = document.getElementById('slide-img-desc');
+        const elImg = document.getElementById('slide-img');
+        const elScript = document.getElementById('slide-script');
+        const elCounter = document.getElementById('slide-counter');
+        const elProgress = document.getElementById('progress-bar');
+        const elPrompterBox = document.getElementById('prompter-box');
+        const elEpisodeList = document.getElementById('episode-list');
+
+        // [New] Switch to Script-based loader
+        function initEpisodeList() {
+            if (typeof episodesData === 'undefined') {
+                console.error("episodesData not found. Make sure episodes_list.js is loaded.");
+                elEpisodeList.innerHTML = '<option value="">データ読み込み失敗</option>';
+                return;
+            }
+            
+            elEpisodeList.innerHTML = episodesData.map(ep => `<option value="${ep.path}">${ep.title}</option>`).join('');
+            
+            // 初回読み込み
+            if (episodesData.length > 0) {
+                changeEpisode(episodesData[0].path);
+            }
+        }
+
+        function changeEpisode(path) {
+            currentPath = path;
+            currentSlide = 0;
+            
+            // 旧スクリプトの削除
+            const oldScript = document.getElementById('slides-data-script');
+            if (oldScript) oldScript.remove();
+
+            // 新スクリプトの挿入
+            const script = document.createElement('script');
+            script.id = 'slides-data-script';
+            script.src = path + 'slides.js?' + new Date().getTime(); // キャッシュ回避
+            script.onload = () => {
+                renderSlide();
+            };
+            document.body.appendChild(script);
+        }
+
+        elEpisodeList.onchange = (e) => changeEpisode(e.target.value);
+
+        function renderSlide() {
+            if (typeof slidesData === 'undefined' || !slidesData[currentSlide]) return;
+            
+            const slide = slidesData[currentSlide];
+            elTitle.innerHTML = slide.title || '無題';
+            elContent.innerHTML = slide.content || '';
+            
+            // Image handling with path correction
+            const imagePath = slide.imageSrc ? (currentPath + slide.imageSrc) : "";
+            if (imagePath) {
+                elImg.src = imagePath;
+                elImg.classList.remove('hidden');
+                elImgDesc.classList.add('hidden');
+                elImg.onerror = () => {
+                    elImg.classList.add('hidden');
+                    elImgDesc.classList.remove('hidden');
+                    elImgDesc.innerText = "[画像未生成]\n" + (slide.imgDesc || '');
+                };
+            } else {
+                elImg.classList.add('hidden');
+                elImgDesc.classList.remove('hidden');
+                elImgDesc.innerText = slide.imgDesc || '';
+            }
+            
+            elScript.innerText = slide.script || '';
+            
+            // Progress Update
+            const displayIndex = currentSlide + 1;
+            const total = slidesData.length;
+            elCounter.innerText = `${displayIndex} / ${total}`;
+            elProgress.style.width = `${(displayIndex / total) * 100}%`;
+            
+            // Reset Scroll
+            elPrompterBox.scrollTop = 0;
+
+            // MathJax Rendering
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function nextSlide() {
+            if (typeof slidesData !== 'undefined' && currentSlide < slidesData.length - 1) {
+                currentSlide++;
+                renderSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                renderSlide();
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        window.onload = initEpisodeList;
+    </script>
+</body>
+</html>

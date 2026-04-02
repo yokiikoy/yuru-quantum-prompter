@@ -1,0 +1,245 @@
+{
+    "source": "草稿1.md",
+    "slides": [
+        {
+            "range": [1, 2],
+            "title": "#1 量子力学という「仕様書」を読み解く",
+            "content": "<div class='text-center py-8'><p class='text-4xl text-blue-800 font-black mb-4 tracking-wider'>量子力学という「仕様書」を読み解く</p><p class='text-2xl text-gray-500 font-bold'>― 予言の形式を解体する ―</p></div>",
+            "imgDesc": "The logo for 'Yuru Quantum Mechanics Radio' involving a star and mechanical blueprint elements."
+        },
+        {
+            "range": [4, 7],
+            "title": "はじめに：物理学徒の「出がらし」",
+            "content": "<ul class='list-none space-y-6 text-3xl font-bold text-gray-700'><li class='flex items-center gap-4'><span class='text-blue-500 text-4xl'>■</span> 33歳、元物質科学専攻</li><li class='flex items-center gap-4'><span class='text-blue-500 text-4xl'>■</span> 現：在野の物理好き</li><li class='flex items-center gap-4'><span class='text-blue-500 text-4xl'>■</span> 物理学徒の「出がらし」</li></ul>",
+            "imgDesc": "A young man sitting at a desk with many books and scattered papers, looking calm and thinking."
+        },
+        {
+            "range": [8, 10],
+            "title": "知識の浮遊感にケリをつける",
+            "content": "<div class='p-8 bg-blue-50 rounded-3xl border-l-8 border-blue-400 shadow-sm'><p class='text-3xl leading-relaxed font-bold text-blue-900'>「これ、何のためにやっているんだっけ」</p><p class='text-xl text-gray-600 mt-6 font-medium'>自分の中にだけ溜まっていく知識に<br>一度「形」を与えて整理してみたい。</p></div>",
+            "imgDesc": "A person organizing loose, floating papers into a solid cubic cardboard box."
+        },
+        {
+            "range": [11, 13],
+            "title": "なぜ今さら「量子力学」か？",
+            "content": "<div class='text-center py-6'><p class='text-2xl font-bold text-gray-500 mb-6'>現代において、最も</p><p class='text-4xl font-black text-red-600 mb-8 underline decoration-red-200 decoration-8'>「誤解され、かつ魅力的に語られすぎている」</p><div class='inline-block bg-red-50 text-red-800 px-8 py-4 rounded-full text-2xl font-bold border-2 border-red-200'>『魔法』や『スピリチュアル』として</div></div>",
+            "imgDesc": "A bookshelf showing a mix of glowing magic books with stars and dry, dusty technical physics manuals."
+        },
+        {
+            "range": [14, 15],
+            "title": "【宣言】「魔法」から「仕様」へ",
+            "content": "<div class='bg-gray-800 p-10 rounded-3xl text-center shadow-xl'><p class='text-2xl font-bold text-gray-400 mb-4'>キラキラした物語の裏側にある</p><p class='text-4xl font-black text-white mb-6 tracking-widest'>ドライで冷徹な「論理の正体」</p><div class='bg-blue-600 text-white px-6 py-2 inline-block rounded-lg text-xl font-bold'>極めて精密な「宇宙の仕様書」</div></div>",
+            "imgDesc": "A hand drawing technical grid lines and numbers over a glowing magical crystal ball."
+        },
+        {
+            "range": [16, 19],
+            "title": "物理学の本質とは何か？",
+            "content": "<div class='flex flex-col items-center justify-center h-full'><p class='text-2xl text-gray-500 font-bold mb-8'>Q. 物理学とは何のための学問か？</p><div class='bg-white border-4 border-blue-200 p-8 rounded-full shadow-lg transform rotate-2 hover:rotate-0 transition-transform'><p class='text-5xl font-black text-blue-900 tracking-widest'>『未来を予言する技術』</p></div></div>",
+            "imgDesc": "A glass sphere containing intricate shiny cogwheels, gears, and mathematical symbols like pi."
+        },
+        {
+            "range": [20, 22],
+            "title": "【思考実験】万力で固定されたライフル",
+            "content": "<div class='text-center space-y-8'><div class='bg-gray-100 p-6 rounded-2xl inline-block'><p class='text-4xl font-black mb-2'>1km先の標的</p><p class='text-xl text-gray-500 font-bold'>を狙う完璧なスナイパー</p></div><p class='text-3xl font-black text-red-600 border-b-4 border-red-200 inline-block pb-2'>「すべての変数」を事前に手に入れたら？</p></div>",
+            "imgDesc": "A sniper rifle held completely still by a giant industrial metal vice, aimed at a far target."
+        },
+        {
+            "range": [23, 25],
+            "title": "すべての「変数」を支配せよ",
+            "content": "<div class='grid grid-cols-2 gap-4 text-xl font-bold'><div class='bg-blue-50 p-4 rounded-lg flex items-center gap-2'><span class='text-blue-500'>✔</span> 弾丸の重量</div><div class='bg-blue-50 p-4 rounded-lg flex items-center gap-2'><span class='text-blue-500'>✔</span> 火薬のエネルギー</div><div class='bg-blue-50 p-4 rounded-lg flex items-center gap-2'><span class='text-blue-500'>✔</span> 銃身の歪み</div><div class='bg-blue-50 p-4 rounded-lg flex items-center gap-2'><span class='text-blue-500'>✔</span> 空気・風・湿度</div></div><div class='mt-6 text-center bg-gray-800 text-white p-4 rounded-xl font-black text-2xl'>運動方程式という「計算機」へ</div>",
+            "imgDesc": "Countless mathematical symbols and equations flowing like a fast river towards a single bullet."
+        },
+        {
+            "range": [28, 28],
+            "title": "確約された未来：必然としての連鎖",
+            "content": "<div class='flex flex-col items-center justify-center p-8 bg-yellow-50 rounded-3xl border-4 border-yellow-200'><p class='text-2xl font-bold text-orange-800 mb-4'>計算が完了した瞬間、</p><p class='text-5xl font-black text-red-600 mb-6'>未来はすでに「確定」している</p><div class='bg-white px-6 py-2 rounded-lg font-bold text-gray-500 border border-gray-200'>偶然や奇跡の入る余地はない。すべては必然。</div></div>",
+            "imgDesc": "A heavy metal chain connecting a large mechanical gear labeled 'Cause' to another labeled 'Effect'."
+        },
+        {
+            "range": [30, 34],
+            "title": "ラプラスの悪魔",
+            "content": "<blockquote class='border-l-8 border-gray-800 pl-8 bg-gray-50 py-10 rounded-r-3xl shadow-sm'><p class='text-2xl italic font-medium leading-relaxed text-gray-700'>「全原子の位置と運動量を把握し、解析できる知性が存在したならば、不確実なものは何一つなく、<br><br><span class='text-3xl font-black text-black'>未来も過去もすべて目の前に展開されているだろう</span>」</p></blockquote>",
+            "imgDesc": "A silhouette of a calm demon viewing a set of complex cosmic clockwork mechanisms."
+        },
+        {
+            "range": [36, 37],
+            "title": "時計仕掛けの自動機械",
+            "content": "<div class='text-center p-8'><p class='text-3xl font-black mb-6 text-blue-900'>巨大な時計仕掛けのネジの巻き方<br>＝ この宇宙の「仕様」</p><ul class='space-y-4 text-xl font-bold text-gray-500'><li>・100年後の日食の時間</li><li>・明日の天気の変化</li><li>・今日の夕飯に何を食べるか</li></ul><p class='mt-6 text-2xl font-black text-blue-600'>すべて計算によって導き出せる</p></div>",
+            "imgDesc": "An extremely large and complex vintage orrery (clockwork solar system) against a starry sky."
+        },
+        {
+            "range": [38, 41],
+            "title": "神の領域を「数式」が奪った日",
+            "content": "<div class='flex flex-col items-center gap-6'><div class='bg-red-50 text-red-800 px-8 py-4 rounded-xl border border-red-200 text-center w-full max-w-md'><p class='text-sm font-bold'>かつて</p><p class='text-2xl font-black'>彗星 ＝「神の怒り」</p></div><p class='text-4xl text-gray-300'>⬇</p><div class='bg-blue-50 text-blue-800 px-8 py-4 rounded-xl border border-blue-200 text-center w-full max-w-md'><p class='text-sm font-bold'>ニュートンの数式</p><p class='text-2xl font-black'>76年後の回帰を「一分の狂いもなく」予言</p></div></div>",
+            "imgDesc": "A dramatic comet in the sky being measured by a scientific ruler and a calendar marked with a future date."
+        },
+        {
+            "range": [43, 45],
+            "title": "紙の上の計算が、未知の惑星を当てた",
+            "content": "<div class='p-10 bg-white rounded-3xl shadow-xl border-t-8 border-blue-500 text-center'><p class='text-4xl font-black mb-6 text-gray-800'>【海王星の発見】</p><p class='text-2xl font-bold text-gray-600 leading-relaxed'>望遠鏡を覗くことなく、<br>ただ<span class='text-blue-600 font-black text-3xl mx-2'>紙の上の計算</span>だけで<br>宇宙の形を指し示した</p></div>",
+            "imgDesc": "A mathematician pointing at a blank dark spot in a star map with a simple pencil."
+        },
+        {
+            "range": [46, 48],
+            "title": "全知全能の終わり：ミクロへの境界",
+            "content": "<div class='bg-gray-900 text-white p-10 rounded-2xl'><p class='text-2xl font-bold text-center text-gray-300 mb-8'>『適切なHowさえ知っていれば、<br>未来は明け渡される』</p><div class='border-t border-dashed border-gray-600 pt-8'><p class='text-center text-xl text-red-400 font-bold'>対象を「原子スケール」に縮小した時、<br>決定論の堅牢な城壁が、不気味に崩壊を始める</p></div></div>",
+            "imgDesc": "A solid stone fortress wall showing tiny cracks from which a strange purple light is leaking."
+        },
+        {
+            "range": [52, 54],
+            "title": "第2章：宇宙が「一発の予言」を拒む時",
+            "content": "<div class='text-center py-12'><h2 class='text-5xl font-black text-red-800 mb-8 tracking-widest'>ミクロの絶望と決定論の崩壊</h2><p class='text-2xl text-gray-600 font-bold bg-white inline-block px-8 py-3 rounded-full shadow-sm'>〜 絶対的真理に突きつけられた境界線 〜</p></div>",
+            "imgDesc": "A sign that says 'CAUTION: MICRO WORLD - LOGIC MAY FAIL' in front of a hazy purple portal."
+        },
+        {
+            "range": [55, 57],
+            "title": "「仕様」のスケールダウンの罠",
+            "content": "<div class='flex items-center justify-center gap-8'><div class='text-center'><div class='w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center text-4xl mb-4'>⚾️</div><p class='font-bold text-xl'>野球のボール</p></div><div class='text-4xl text-gray-400 font-black'>▶︎</div><div class='text-center'><div class='w-32 h-32 bg-blue-50 rounded-full flex items-center justify-center text-4xl mb-4'>⚡️</div><p class='font-bold text-xl'>何億分の一の電子</p></div></div><p class='text-center mt-10 text-2xl font-black text-red-600'>「同じ方程式で予言できるはず」という慢心</p>",
+            "imgDesc": "A baseball seen through a series of magnifying glasses, magnifying down until it becomes a tiny glowing point."
+        },
+        {
+            "range": [58, 62],
+            "title": "不気味な実験：二重スリット実験",
+            "content": "<div class='bg-gray-50 border-4 border-gray-200 p-8 rounded-3xl'><p class='text-xl text-center text-gray-500 font-bold mb-6'>驚くほど単純な、3つのセットアップ</p><div class='flex justify-around items-center font-black text-2xl text-blue-900'><div class='p-4 border-b-4 border-blue-500'>1. 電子銃</div><div class='p-4 border-b-4 border-blue-500'>2. スリット</div><div class='p-4 border-b-4 border-blue-500'>3. スクリーン</div></div></div>",
+            "imgDesc": "A scientific diagram of an electron gun, two vertical slits, and a flat detection screen."
+        },
+        {
+            "range": [65, 67],
+            "title": "普通の挙動：BB弾の場合",
+            "content": "<div class='text-center space-y-6'><div class='inline-block bg-blue-100 text-blue-900 px-8 py-4 rounded-xl font-black text-2xl'>「右を狙えば右に、左なら左に」</div><ul class='text-xl text-gray-600 font-bold space-y-2'><li>・スクリーンには「2本の縦線」ができるだけ</li><li>・予言は完璧に機能している</li><li>・極めて健全な状態</li></ul></div>",
+            "imgDesc": "Small metal BB bullets forming two perfectly neat vertical stripes on a targeting board."
+        },
+        {
+            "range": [68, 70],
+            "title": "ミクロの屈辱：完璧な一発の電子",
+            "content": "<div class='bg-red-50 px-10 py-12 rounded-3xl border-l-8 border-red-500'><p class='text-2xl font-bold mb-6'>電子銃を、万力でガチガチに固定する。</p><p class='text-3xl font-black text-red-800 leading-relaxed'>ノイズのない完璧な環境で、<br>1ミリの狂いもなく「1発だけ」撃つ。</p></div>",
+            "imgDesc": "A high-tech electron gun held by an extremely heavy-duty metal clamp in a laboratory."
+        },
+        {
+            "range": [74, 78],
+            "title": "宇宙による「決定論」の拒絶",
+            "content": "<div class='bg-white p-8 rounded-2xl shadow-lg border border-gray-100'><ul class='space-y-6 text-2xl font-bold'><li class='flex gap-4'><span class='w-20 text-gray-400'>1発目:</span> <span class='text-blue-600'>右側に当たった。</span></li><li class='flex gap-4'><span class='w-20 text-gray-400'>2発目:</span> <span class='text-red-600'>左側に当たった！？</span></li><li class='flex gap-4'><span class='w-20 text-gray-400'>3発目:</span> <span class='text-gray-800'>真ん中。</span></li></ul><p class='mt-8 text-center text-sm font-bold text-gray-400'>※全く同じ条件で撃ち続けています</p></div>",
+            "imgDesc": "A screen showing various hit points scattered randomly despite the gun being perfectly still."
+        },
+        {
+            "range": [79, 83],
+            "title": "スナイパーの弾丸が天井に当たるホラー",
+            "content": "<div class='text-center p-8'><p class='text-3xl font-black text-red-600 mb-6'>「全く同じ条件なのに、<br>次の1発がどこに行くか誰にも予言できない」</p><div class='bg-gray-800 text-white px-6 py-4 rounded-xl inline-block mt-4'><p class='text-xl font-bold'>数百年磨き上げた『武器』が<br>オモチャのように無力化された瞬間</p></div></div>",
+            "imgDesc": "A bullet from a fixed gun curving upwards dramatically towards a target on the ceiling."
+        },
+        {
+            "range": [84, 87],
+            "title": "「神はサイコロを振らない」",
+            "content": "<blockquote class='border-y-4 border-gray-800 py-10 my-6 text-center bg-gray-50'><p class='text-5xl font-black text-red-600 tracking-widest mb-4'>God doesn't play dice.</p><p class='text-2xl font-bold text-gray-700 mt-6'>因果律を愛したアインシュタインの<br>「絶望に近い執念」</p></blockquote>",
+            "imgDesc": "Albert Einstein with a fierce expression throwing a pair of giant six-sided dice into space."
+        },
+        {
+            "range": [88, 92],
+            "title": "人類の、泥臭い「巨大な妥協」",
+            "content": "<div class='bg-blue-900 text-white p-10 rounded-3xl text-center shadow-2xl transform hover:scale-105 transition-transform'><p class='text-2xl font-bold mb-6 text-blue-200'>未来を「1つの点（ドット）」で当てる全能感を捨てる</p><p class='text-4xl font-black leading-tight'>『1万発撃ち込んだ時の、<br>分布（確率の雲）なら完璧に予言する』</p></div>",
+            "imgDesc": "A hand letting go of a single sharp pinpoint and embracing a large, soft, glowing cloud."
+        },
+        {
+            "range": [93, 94],
+            "title": "「諦め」こそが、量子力学の正体",
+            "content": "<div class='flex flex-col items-center justify-center h-full'><p class='text-3xl font-bold text-gray-600 leading-relaxed text-center'>全知全能の予言を放棄した敗北と妥協。<br>その屈辱の果てに手に入れた、</p><p class='text-5xl font-black text-blue-800 mt-6 border-b-8 border-blue-200 pb-2'>ミクロを支配する新しいパラダイム</p></div>",
+            "imgDesc": "A vast field of tiny glowing probability dots forming a beautiful, complex cloud structure."
+        },
+        {
+            "range": [98, 103],
+            "title": "第3章：統計的支配と「スベった猫」",
+            "content": "<div class='text-center py-12'><h2 class='text-5xl font-black text-orange-600 mb-8 tracking-widest'>宇宙をガチャ運営視点で見る</h2><p class='text-2xl text-gray-600 font-bold bg-white inline-block px-8 py-3 rounded-full shadow-sm'>〜 個人のわがままは追わない 〜</p></div>",
+            "imgDesc": "A figure in a neat suit and glasses looking at a large wall of probability and statistics monitors."
+        },
+        {
+            "range": [104, 108],
+            "title": "【視点変更】ソーシャルゲームの運営者へ",
+            "content": "<div class='bg-gray-100 p-8 rounded-2xl border-2 border-gray-300'><div class='flex items-center gap-6 mb-6'><div class='text-6xl'>📱</div><p class='text-2xl font-black'>「次の一回でSSRが出るか？」</p></div><p class='text-xl text-red-600 font-bold pl-20'>⇒ ユーザーにもエンジニアにも、誰にも予言できない（ゆらぎ）</p></div>",
+            "imgDesc": "A smartphone screen showing a gacha animation with stars, next to a question mark."
+        },
+        {
+            "range": [111, 115],
+            "title": "百万人の収益（分布）は100%予言できる",
+            "content": "<div class='text-center space-y-6'><p class='text-2xl font-bold text-gray-600'>個別のユーザーの運命は分からない。<br>けれど…</p><div class='bg-yellow-50 border-4 border-yellow-400 p-6 rounded-3xl'><p class='text-4xl font-black text-orange-800'>システム全体の挙動は、<br>冷徹なまでに正確に管理下にある</p></div></div>",
+            "imgDesc": "A group of millions of small dots forming a perfectly shaped, predictable bell curve graph."
+        },
+        {
+            "range": [116, 118],
+            "title": "最強の「統計予言書」：シュレディンガー方程式",
+            "content": "<div class='bg-gray-800 p-10 rounded-2xl shadow-xl text-center'><p class='text-2xl font-bold text-blue-300 mb-6'>粒子ではなく『確率の波』を計算する</p><div class='bg-black py-6 rounded-xl'><div class='text-3xl text-white'>\\[ \\hat{H}|\\psi\\rangle = i\\hbar \\frac{\\partial}{\\partial t}|\\psi\\rangle \\]</div></div><p class='text-xl font-bold text-red-400 mt-6'>実は、驚くほど「決定論的」な数式</p></div>",
+            "imgDesc": "A glowing mathematical formula for the Schrodinger equation floating over calm waves."
+        },
+        {
+            "range": [119, 120],
+            "title": "「ボヤケざるを得ない仕様」の中での精密さ",
+            "content": "<div class='p-8 bg-white border-l-8 border-blue-500 rounded-lg shadow-sm'><p class='text-2xl font-black text-gray-800 leading-relaxed'>ボヤけざるを得ない仕様の中で、<br>最大限に精密な統計を行う、<br><span class='text-blue-600 text-3xl'>極めて冷徹な学問。</span></p></div>",
+            "imgDesc": "A neat office desk with a calculator, notebook, and many carefully filed folders."
+        },
+        {
+            "range": [121, 126],
+            "title": "渾身のツッコミ：シュレディンガーの猫",
+            "content": "<div class='flex flex-col items-center justify-center p-8 bg-gray-100 rounded-3xl'><p class='text-3xl font-black mb-6'>「箱の中の猫が、<br>生と死の重なり合い状態に…？」</p><p class='text-xl font-bold text-gray-500 bg-white px-6 py-2 rounded-full border border-gray-300'>誰もが知る、量子力学の定番エピソード</p></div>",
+            "imgDesc": "A simple wooden box with a cat sitting inside next to a small glass vial."
+        },
+        {
+            "range": [127, 133],
+            "title": "「そんな化け物を認めるのか？」",
+            "content": "<div class='bg-red-50 p-10 rounded-2xl border border-red-200 text-center'><p class='text-3xl font-black text-red-800 mb-6'>本来の意図は「皮肉（アンチテーゼ）」</p><p class='text-2xl font-bold text-gray-700 leading-relaxed'>「君たちの理論が正しいなら、<br>こんな常識的にありえない化け物が生まれるぞ。<br>根本的に間違っている！」</p></div>",
+            "imgDesc": "Schrodinger looking shocked and pointing at a diagram of a cat that is both a zombie and alive."
+        },
+        {
+            "range": [134, 136],
+            "title": "世界最大級にスベり続けているジョーク",
+            "content": "<div class='text-center space-y-6'><p class='text-2xl font-bold text-gray-600'>生みの親の「渾身のツッコミ」を忘れ…</p><div class='bg-blue-50 py-8 px-12 rounded-full inline-block border-4 border-blue-200'><p class='text-3xl font-black text-blue-900'>現代人「猫が重なってる！ ミステリアス！」</p></div><p class='text-xl font-bold text-gray-500'>歴史の皮肉、マジレスの到達点。</p></div>",
+            "imgDesc": "A crowd of people celebrating around a cat in a magical orb, while a figure in the back looks disappointed."
+        },
+        {
+            "range": [140, 145],
+            "title": "第4章：量子力学という「特別扱い」の正体",
+            "content": "<div class='text-center py-10'><h2 class='text-5xl font-black text-blue-900 mb-8'>宇宙のバグを「ヨシ！」とする勇気</h2><div class='bg-gray-100 p-8 rounded-2xl inline-block text-left'><p class='text-2xl font-bold border-b-2 pb-2 mb-4'>世の中の「スゴーイ！」物理現象</p><p class='text-xl text-gray-700'>例：水溶き片栗粉の『ダイラタンシー』</p></div></div>",
+            "imgDesc": "A hand punching a bowl of liquid starch, which instantly solidifies under the impact."
+        },
+        {
+            "range": [149, 153],
+            "title": "なぜ量子にだけ「人生の意味」を求めるのか",
+            "content": "<div class='bg-red-50 p-8 rounded-2xl border-l-8 border-red-500 shadow-sm'><p class='text-2xl font-bold leading-relaxed'>ダイラタンシーを見て、<br>「私の意識や運命とどう関係していますか」<br>などと真顔で問いかける人はいない。</p></div><p class='text-center mt-6 text-xl font-bold text-gray-400'>なぜ量子力学だけが「神話」に昇格するのか？</p>",
+            "imgDesc": "A thinking person looking at a plain bowl of starch while mystical stars float around it."
+        },
+        {
+            "range": [154, 159],
+            "title": "理系人間を悩ませる「筋違いの問い」",
+            "content": "<div class='bg-white p-8 rounded-2xl border-2 border-gray-200'><p class='text-xl text-gray-500 font-bold mb-4'>無意識に襟首を掴んで叩きつけられる問い：</p><ul class='space-y-4 text-2xl font-black text-gray-800'><li class='flex gap-4'><span>❓</span> 波動関数の「実体」って何？</li><li class='flex gap-4'><span>❓</span> つまり「平行世界」があるってこと？</li></ul></div>",
+            "imgDesc": "A tired researcher being overwhelmed by giant glowing question marks floating in the air."
+        },
+        {
+            "range": [160, 170],
+            "title": "流体力学でシミュレーションしてみると…",
+            "content": "<div class='space-y-6'><div class='bg-blue-50 p-6 rounded-xl border border-blue-200'><p class='text-lg font-bold text-blue-900'>「水の意思がカオスを起こしたんですか？」</p></div><div class='bg-blue-50 p-6 rounded-xl border border-blue-200'><p class='text-lg font-bold text-blue-900'>「左に巻いた渦の並行世界は実在しますか？」</p></div><p class='text-center text-xl font-black text-gray-400'>…誰もそんなバカなことは聞かない。</p></div>",
+            "imgDesc": "A close-up of a blue water swirl in a cup, looks completely normal and non-magical."
+        },
+        {
+            "range": [171, 182],
+            "title": "エンジニアへのクレーマー・バグ報告",
+            "content": "<div class='bg-gray-800 text-green-400 p-8 rounded-2xl font-mono shadow-2xl relative overflow-hidden'><div class='absolute top-0 right-0 bg-red-600 text-white text-xs px-2 py-1 font-bold'>BUG REPORT</div><p class='text-xl leading-relaxed mt-4'>> 実行されなかった方の条件分岐(else句)のデータは、<br>> 物理的にどこのサーバーに保存されているんですか？<br>> 実体がないと困るんですが。</p></div>",
+            "imgDesc": "An engineer with a confused face looking at a computer monitor screen."
+        },
+        {
+            "range": [183, 192],
+            "title": "誠実に答えると、恐ろしく退屈な真実",
+            "content": "<div class='flex flex-col items-center gap-6'><div class='bg-yellow-50 p-8 rounded-3xl border-4 border-yellow-200 w-full'><p class='text-xl font-bold text-gray-600 mb-2'>【シュレディンガーの猫の正体】</p><p class='text-lg font-mono text-gray-800 leading-relaxed'>純粋状態が混合状態へと、密度行列の非対角要素が指数関数的に消滅するプロセスを記述しているだけに過ぎません。</p></div><p class='text-3xl font-black text-red-600 mt-4'>「宇宙の仕様書（How）」≠「魔法の物語（Why）」</p></div>",
+            "imgDesc": "A mountain of thick, dusty, boring technical books burying a small mystical glowing orb."
+        },
+        {
+            "range": [194, 201],
+            "title": "計算は合うから、ヨシ！",
+            "content": "<div class='text-center space-y-8'><p class='text-2xl font-bold text-gray-700 leading-loose'>居心地の悪い事実を、物語で飾らずに、<br>そのまま受け入れてみる勇気。</p><div class='bg-black text-white px-16 py-8 rounded-full text-5xl font-black shadow-2xl inline-block transform hover:scale-110 transition-transform'>「ヨシ！」</div></div>",
+            "imgDesc": "A final rubber stamp with the text 'OK' being pressed down hard onto a blueprint."
+        },
+        {
+            "range": [203, 208],
+            "title": "宇宙の仕様を、そのままに（次回予告）",
+            "content": "<div class='text-center space-y-6 mt-10'><h2 class='text-5xl font-black text-blue-900 mb-10'>次回：不確定性原理</h2><div class='bg-blue-50 inline-block px-10 py-6 rounded-2xl border-2 border-blue-200'><p class='text-2xl text-blue-800 font-bold tracking-widest'>〜 宇宙が僕たちに見せてくれない<br>解像度の限界 〜</p></div></div>",
+            "imgDesc": "The speaker waving goodbye in a room full of stars and galaxies visible through the window."
+        }
+    ]
+}
