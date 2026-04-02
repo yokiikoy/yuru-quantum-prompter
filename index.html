@@ -81,6 +81,16 @@
             margin-top: 8px;
             font-weight: 700;
         }
+        
+        /* モバイル対応：バブル内の文字サイズ調整 */
+        @media (max-width: 768px) {
+            #slide-content .bubble { padding: 12px; margin: 8px 0; }
+            #slide-content .text-5xl { font-size: 1.875rem !important; line-height: 2.25rem !important; }
+            #slide-content .text-xl { font-size: 1rem !important; line-height: 1.5rem !important; }
+            #slide-content .text-2xl { font-size: 1.25rem !important; line-height: 1.75rem !important; }
+            #slide-content .text-lg { font-size: 0.875rem !important; line-height: 1.25rem !important; }
+            #slide-content .bubble-pink p, #slide-content .bubble-yellow p { font-size: 1rem !important; }
+        }
     </style>
 </head>
 <body class="h-screen flex flex-col overflow-hidden text-gray-800">
@@ -102,20 +112,20 @@
     </div>
     
     <!-- Slide View Area (60% height) -->
-    <div class="slide-area flex-[60] min-h-0 w-full flex justify-center items-start pt-10 px-8 pb-8 shadow-sm border-b-2 border-gray-100 overflow-hidden">
+    <div class="slide-area flex-[60] min-h-0 w-full flex justify-center items-start pt-4 px-4 md:pt-10 md:px-8 pb-8 shadow-sm border-b-2 border-gray-100 overflow-hidden">
         <div class="w-full max-w-6xl h-full flex flex-col justify-start items-center relative">
             
-            <h1 id="slide-title" class="text-3xl font-bold mb-8 text-gray-700 text-left w-full pb-4 shrink-0 min-h-[5rem] flex items-center">
+            <h1 id="slide-title" class="text-xl md:text-3xl font-bold mb-2 md:mb-8 text-gray-700 text-left w-full pb-2 md:pb-4 shrink-0 min-h-[3rem] md:min-h-[5rem] flex items-center">
                 タイトル
             </h1>
             
-            <div class="flex w-full flex-1 min-h-0 justify-between items-center gap-12 overflow-hidden">
-                <div id="slide-content" class="w-3/5 h-full flex flex-col justify-center text-3xl leading-relaxed font-medium px-6 text-gray-700 overflow-y-auto">
+            <div class="flex flex-col md:flex-row w-full flex-1 min-h-0 justify-between items-center gap-4 md:gap-12 overflow-hidden">
+                <div id="slide-content" class="w-full md:w-3/5 h-auto md:h-full flex flex-col justify-center text-lg md:text-3xl leading-relaxed font-medium px-2 md:px-6 text-gray-700 overflow-y-auto">
                     <!-- 内容がここに挿入されます -->
                 </div>
-                <div class="img-placeholder w-2/5 h-full flex flex-col justify-center items-center p-0 relative group shrink-0">
-                    <img id="slide-img" src="" class="hidden w-full max-h-full object-contain mx-auto" style="filter: multiply; mix-blend-mode: multiply;" />
-                    <p id="slide-img-desc" class="text-gray-400 text-base whitespace-pre-wrap text-center italic leading-relaxed">
+                <div class="img-placeholder w-full md:w-2/5 h-1/2 md:h-full flex flex-col justify-center items-center p-0 relative group shrink-0">
+                    <img id="slide-img" src="" class="hidden w-auto h-auto max-w-full max-h-full object-contain mx-auto" style="filter: multiply; mix-blend-mode: multiply;" />
+                    <p id="slide-img-desc" class="text-gray-400 text-xs md:text-base whitespace-pre-wrap text-center italic leading-relaxed">
                         [画像指示文]
                     </p>
                 </div>
@@ -124,18 +134,17 @@
     </div>
 
     <!-- Prompter View Area (40% height) -->
-    <div class="flex-[40] min-h-0 w-full bg-slate-900 flex justify-center py-6 px-10 relative overflow-hidden">
-        <div class="absolute top-2 left-6 text-blue-400 font-bold text-[10px] tracking-[0.3em] opacity-40 uppercase">Voice Over Script / 語り用台本</div>
-        <div id="prompter-box" class="prompter-container w-full max-w-5xl h-full overflow-y-auto px-4 pb-16 pt-4">
-            <p id="slide-script" class="text-white text-2xl leading-loose font-medium tracking-wide">
+    <div class="flex-[40] min-h-0 w-full bg-slate-900 flex justify-center py-4 px-6 md:py-6 md:px-10 relative overflow-hidden">
+        <div class="absolute top-1 left-4 md:top-2 md:left-6 text-blue-400 font-bold text-[8px] md:text-[10px] tracking-[0.3em] opacity-40 uppercase">Voice Over Script / 語り用台本</div>
+        <div id="prompter-box" class="prompter-container w-full max-w-5xl h-full overflow-y-auto px-2 md:px-4 pb-12 md:pb-16 pt-2 md:pt-4">
+            <p id="slide-script" class="text-white text-lg md:text-2xl leading-loose font-medium tracking-wide">
                 <!-- 原稿がここに挿入されます -->
             </p>
-            </div>
         </div>
         <!-- 浮遊ナビゲーションボタン（スマホ用） -->
-        <div class="fixed bottom-32 right-8 flex gap-4 z-[100] md:hidden">
-            <button onclick="prevSlide()" class="w-16 h-16 rounded-full bg-white/80 border-2 border-gray-400 text-gray-700 text-2xl flex items-center justify-center shadow-lg active:scale-95">←</button>
-            <button onclick="nextSlide()" class="w-16 h-16 rounded-full bg-white/80 border-2 border-gray-400 text-gray-700 text-2xl flex items-center justify-center shadow-lg active:scale-95">→</button>
+        <div class="fixed bottom-24 right-4 flex gap-3 z-[100] md:hidden">
+            <button onclick="prevSlide()" class="w-12 h-12 rounded-full bg-black/50 border border-white/30 text-white text-xl flex items-center justify-center shadow-lg active:scale-95 backdrop-blur-sm">←</button>
+            <button onclick="nextSlide()" class="w-12 h-12 rounded-full bg-black/50 border border-white/30 text-white text-xl flex items-center justify-center shadow-lg active:scale-95 backdrop-blur-sm">→</button>
         </div>
     </div>
 
