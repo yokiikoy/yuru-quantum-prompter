@@ -10,7 +10,7 @@
 
 次はリポジトリオーナーが確定させてほしい。未記入のままエージェントは仮定で進めない。
 
-1. **リモート／公開名**（`REPO_OR_FOLDER_NAME`）: GitHub 等でのリポジトリ名・Pages URL の意図。
+1. **リモート／公開名**（`REPO_OR_FOLDER_NAME`）: **確定** — GitHub リポジトリ名は **`kuchi-draft`**（`https://github.com/yokiikoy/kuchi-draft`）。GitHub Pages のパスはリポジトリ設定次第で、プロジェクトサイトなら多くの場合 `https://yokiikoy.github.io/kuchi-draft/`。
 2. **いまの目的**（1〜3文）: 収録用のみか、公開アーカイブか、複数番組の共用基盤かの優先順位。
 3. **正本メモのファイル名**: 本ファイルを `AGENTS.md` のままにするか、`RESUME_CONTEXT.md` 等へ移すか。
 4. **ユーザー向け長文ドキュメントの置き場**: `docs/` を作る合意があるか（現状はルートと `README_SOP.md` のみ）。
@@ -21,7 +21,7 @@
 
 - **ローカルルート**: 本ファイルがあるディレクトリ（`ゆる量子力学ラジオ`）がリポジトリルート。
 - **エントリポイント**: 収録用 UI はルートの `index.html`（`episodes_list.js` でシリーズ・エピソードを列挙）。
-- **ビルド**: Node.js（依存パッケージなし）、`src/build_slides.mjs` が `manifest.json` + Markdown 原稿から各エピソードの `slides.js` を生成する。
+- **ビルド**: Node.js。`src/build_slides.mjs` が `manifest.json` + Markdown 原稿から各エピソードの `slides.js` を生成。**スタイル**: `npm run build:css` で Tailwind を `assets/app.css` に出力（Pages 用に CSS はリポジトリへコミット。`index.html` や `episodes/**` のユーティリティクラスを変えたら再実行）。
 
 ---
 
@@ -37,7 +37,7 @@
 
 - バックエンド・認証・DB。
 - 原稿の自動翻訳や TTS 統合。
-- npm ビルドチェーンの導入（現状は CDN の Tailwind / MathJax 等）。
+- 重いフロントフレームワークや複雑な npm パイプライン（**例外**: Tailwind のみ `devDependencies` で CSS ビルド。MathJax / Tailwind JIT CDN は廃止）。
 
 ---
 
@@ -79,8 +79,8 @@
 
 ## 再現手順
 
-1. **前提**: **Node.js**（ビルド用・v18+ 推奨）、モダンブラウザ。npm 依存は不要。
-2. **ビルド**（ルートで）:
+1. **前提**: **Node.js**（ビルド用・v18+ 推奨）、モダンブラウザ。スライド生成だけなら npm 不要。**UI 用 CSS** は初回・スタイル変更時に `npm install` と `npm run build:css`（出力 `assets/app.css` をコミット）。
+2. **スライドビルド**（ルートで）:
    ```bash
    node src/build_slides.mjs
    ```
@@ -88,12 +88,16 @@
    ```bash
    node src/build_slides.mjs episodes/01_量子力学の仕様書
    ```
-3. **確認**: ルートで Node の静的サーバを起動して `index.html` を開く:
+3. **CSS ビルド**（`index.html` や `episodes/**` の Tailwind クラスを変えたとき）:
+   ```bash
+   npm run build:css
+   ```
+4. **確認**: ルートで Node の静的サーバを起動して `index.html` を開く:
    ```bash
    node src/serve.mjs
    ```
    既定は `http://127.0.0.1:8765/`。初期シリーズ・エピソードは URL クエリで指定可能: `?series=<seriesId>`、任意で `&episode=<ep.id>`（値は `episodes_list.js` の `seriesId` / 各エピソードの `id` と一致）。クエリなしのときは URL は書き換えない。ドロップダウン変更時は `history.replaceState` でクエリを同期する。
-4. **成果物**: 各エピソードフォルダの `slides.js`（生成物。原稿・manifest と整合を保つ）。
+5. **成果物**: 各エピソードフォルダの `slides.js`（生成物。原稿・manifest と整合を保つ）。併せて `assets/app.css`（スタイル変更時）。
 
 ---
 
@@ -120,3 +124,5 @@
 - **2026-04-05**: `index.html` で URL クエリ `series` / `episode` による初期選択と、ドロップダウン変更時の URL 同期（`replaceState`）を追加。
 - **2026-04-05**: ビルドを `src/build_slides.mjs` に統一。引数なし時は `episodes/` 以下の `manifest.json` があるディレクトリを列挙して対話選択。
 - **2026-04-05**: プレビュー用 `src/serve.mjs` を追加。ビルド〜ローカル確認は **Node + ブラウザのみ**。
+- **GitHub リポジトリ名を `kuchi-draft` に統一**: ローカル `origin` を `https://github.com/yokiikoy/kuchi-draft.git` に更新。`README_SOP.md` の Pages 例 URL、`AGENTS.md` のリモート名を同期。
+- **表示パフォーマンス**: Tailwind の **JIT CDN**・**polyfill.io**・**MathJax** をやめ、`npm run build:css` で **`assets/app.css`（約14KB minify）** を配信。スライド HTML に LaTeX が無い限り数式レンダリングは行わない（台本の `$$` はプレーン表示）。

@@ -53,7 +53,7 @@
     git commit -m "Update episode content"
     git push origin main
     ```
-2.  数分以内に、公開されている GitHub Pages (例: `https://<YOUR-USERNAME>.github.io/yuru-quantum-prompter/`) の内容が自動的に最新版へと更新されます。
+2.  数分以内に、公開されている GitHub Pages (例: `https://<YOUR-USERNAME>.github.io/kuchi-draft/`) の内容が自動的に最新版へと更新されます。
 
 ---
 

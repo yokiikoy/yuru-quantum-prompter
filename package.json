@@ -1,0 +1,10 @@
+{
+  "name": "kuchi-draft",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/tailwind-input.css -o ./assets/app.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
