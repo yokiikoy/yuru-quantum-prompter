@@ -4,7 +4,11 @@
  * Discord 等は ?series= の付いたトップ URL では HTML が共通のため og:image を切り替えられない。
  * 共有用には share/*.html を貼る（本文は本番ビューへリダイレクト）。
  *
- * サイトの公開オリジン（og:image / og:url 用）:
+ * og:image は次の優先順位:
+ *   1. share/previews/<seriesId>-<episodeId>.png（npm run capture:share で生成したスライド全景）
+ *   2. 先頭スライドの imageSrc（従来の挿絵のみ）
+ *
+ * サイトの公開オリジン:
  *   KUCHI_DRAFT_SITE_ORIGIN=https://yokiikoy.github.io/kuchi-draft
  */
 import fs from "node:fs";
@@ -124,18 +128,27 @@ function main() {
                 continue;
             }
             const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+            const slug = `${seriesId}-${episodeId}`;
+            const previewRel = `share/previews/${slug}.png`;
+            const previewAbsPath = path.join(repoRoot, previewRel);
             const imageRel = firstSlideImageRel(epPath, manifest);
-            if (!imageRel) {
-                console.warn(`Skip ${seriesId}/${episodeId}: no slide with imageSrc`);
+
+            let ogImageRel = null;
+            if (fs.existsSync(previewAbsPath)) ogImageRel = previewRel;
+            else if (imageRel) ogImageRel = imageRel;
+
+            if (!ogImageRel) {
+                console.warn(
+                    `Skip ${seriesId}/${episodeId}: no share/previews/${slug}.png (run npm run capture:share) and no imageSrc on first slides`
+                );
                 continue;
             }
 
-            const ogImageAbs = absoluteAssetUrl(origin, imageRel);
+            const ogImageAbs = absoluteAssetUrl(origin, ogImageRel);
             const viewerAbs = viewerUrl(origin, seriesId, episodeId);
             const description = manifest.description || "";
             const redirectHref = `../?series=${encodeURIComponent(seriesId)}&episode=${encodeURIComponent(episodeId)}`;
 
-            const slug = `${seriesId}-${episodeId}`;
             const html = buildShareHtml({
                 seriesTitle,
                 episodeTitle,
@@ -175,7 +188,7 @@ function main() {
 </head>
 <body>
     <h1>共有用プレビュー（OG 付き）</h1>
-    <p class="note">Discord 等ではトップ URL のクエリではサムネが切り替わらないため、ここから該当ページの URL をコピーして貼ってください。</p>
+    <p class="note">Discord 等ではトップ URL のクエリではサムネが切り替わらないため、ここから該当ページの URL をコピーして貼ってください。サムネは <code>npm run capture:share</code> で生成したスライド全景 PNG（<code>share/previews/</code>）を参照します。</p>
     <ul>
 ${indexBody}
     </ul>

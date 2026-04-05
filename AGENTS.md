@@ -70,8 +70,9 @@
 | `episodes_list.js` | シリーズ・エピソード一覧と `slides.js` への相対パス。 |
 | `episodes/<シリーズまたは回>/` | エピソード単位。原稿 `草稿1.md`（またはフォルダ内の .md）、`manifest.json`、生成 `slides.js`、画像など。 |
 | `src/build_slides.mjs` | manifest + 原稿 → `slides.js` 生成（`node` で実行）。 |
-| `src/build_share_pages.mjs` | `episodes_list.js` から **SNS 用** `share/<seriesId>-<episodeId>.html` を生成（先頭スライドの `imageSrc` を `og:image` に。`npm run build:share`）。 |
-| `share/` | 生成物。Discord 等では **share URL** を貼る（`?series=` 付きトップでは OG が共通のまま）。 |
+| `src/build_share_pages.mjs` | `episodes_list.js` から **SNS 用** `share/<seriesId>-<episodeId>.html` を生成（`npm run build:share`）。`og:image` は `share/previews/*.png` を優先、無ければ先頭 `imageSrc`。 |
+| `src/capture_share_screens.mjs` | Playwright で `?ogCapture=1` の **スライド枠全景** を `share/previews/*.png` に保存（`npm run capture:share`。要 `npx playwright install chromium`）。 |
+| `share/` | `*.html` と `previews/*.png`（キャプチャ生成）。Discord 等では **share URL** を貼る。 |
 | `src/generate_images.mjs` | `manifest.json` の `imgDesc` + ベースプロンプトで **Imagen 4 Fast** 画像生成（`GEMINI_API_KEY`・追加 npm 依存なし）。 |
 | `src/serve.mjs` | ローカルプレビュー用の静的サーバ（`node` のみ・既定ポート 8765）。 |
 | `DESIGN_GUIDE.md` | スライド HTML・CSS クラスのリファレンス。 |
@@ -82,7 +83,7 @@
 
 ## 再現手順
 
-1. **前提**: **Node.js**（ビルド用・v18+ 推奨）、モダンブラウザ。スライド生成だけなら npm 不要。**UI 用 CSS** は初回・スタイル変更時に `npm install` と `npm run build:css`（出力 `assets/app.css` をコミット）。
+1. **前提**: **Node.js**（ビルド用・v18+ 推奨）、モダンブラウザ。スライド生成だけなら npm 不要。**UI 用 CSS** は初回・スタイル変更時に `npm install` と `npm run build:css`（出力 `assets/app.css` をコミット）。**共有サムネ（Playwright）** は初回 `npx playwright install chromium`。
 2. **スライドビルド**（ルートで）:
    ```bash
    node src/build_slides.mjs
@@ -100,7 +101,7 @@
    node src/serve.mjs
    ```
    既定は `http://127.0.0.1:8765/`。初期シリーズ・エピソードは URL クエリで指定可能: `?series=<seriesId>`、任意で `&episode=<ep.id>`（値は `episodes_list.js` の `seriesId` / 各エピソードの `id` と一致）。クエリなしのときは URL は書き換えない。ドロップダウン変更時は `history.replaceState` でクエリを同期する。
-5. **成果物**: 各エピソードフォルダの `slides.js`（生成物。原稿・manifest と整合を保つ）。併せて `assets/app.css`（スタイル変更時）。**SNS 用** `share/*.html` は `npm run build:share` で再生成してコミット（`episodes_list.js` や先頭スライド画像を変えたとき）。
+5. **成果物**: 各エピソードフォルダの `slides.js`（生成物。原稿・manifest と整合を保つ）。併せて `assets/app.css`（スタイル変更時）。**SNS 用**: 先頭スライド見た目を変えたら `npm run capture:share` のあと `npm run build:share` で `share/previews/*.png` と `share/*.html` をコミット。
 
 ---
 
@@ -132,4 +133,4 @@
 - **2026-04-05**: 対象読者を**話者＋リスナー・非同期閲覧**に明記。`DESIGN_GUIDE.md` §8 を「厳格な短文化」から**文字量推奨レンジ（図表・アイコン活用）**へ更新。`README.md`・`README_SOP.md`・本ファイルのスコープ記述を同期。
 - **2026-04-05**: スライド画像のバッチ生成用に `src/generate_images.mjs`。**Gemini API（Imagen 4 Fast）**、`--dry-run` / `--write-manifest` / `--skip-existing` / `--max-api-calls**。`.env` は `.gitignore`。手順は `README_SOP.md` §5。
 - **2026-04-05**: Imagen ベースプロンプトで**画像内の文字を原則禁止**（`imgDesc` で明示した場合のみ。記号のみ可）。`DESIGN_GUIDE.md`・`README_SOP.md` に運用を追記。
-- **2026-04-05**: **OG / 共有**: `index.html` にデフォルトの Open Graph・Twitter カード。エピソード別サムネは `src/build_share_pages.mjs`（`npm run build:share`）で `share/*.html` を生成し、Discord 等にはその URL を貼る。
+- **2026-04-05**: **OG / 共有**: `index.html` にデフォルト OG。`share/*.html` は `npm run build:share`。サムネは `?ogCapture=1`＋Playwright の `npm run capture:share` で `share/previews/*.png`（スライド全景）を優先し、Discord 等には share URL を貼る。

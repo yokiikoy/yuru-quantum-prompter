@@ -4,9 +4,11 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/tailwind-input.css -o ./assets/app.css --minify",
     "build:share": "node src/build_share_pages.mjs",
+    "capture:share": "node src/capture_share_screens.mjs",
     "generate:images": "node src/generate_images.mjs"
   },
   "devDependencies": {
+    "playwright": "^1.49.1",
     "tailwindcss": "^3.4.17"
   }
 }

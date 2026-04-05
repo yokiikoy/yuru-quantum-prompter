@@ -29,7 +29,9 @@
 
    **表示が崩れたら** `npm run build:css` を再実行し、`assets/app.css` を更新してからデプロイしてください。
 
-4. **スライド右ペイン用の画像**を Gemini API（**Imagen 4 Fast**）で一括生成する場合は [README_SOP.md](README_SOP.md) §5。要約: `GEMINI_API_KEY` を設定し、`node src/generate_images.mjs episodes/<フォルダ> --write-manifest` のあと `node src/build_slides.mjs` を実行。
+4. **スライド右ペイン用の画像**を Gemini API（**Imagen 4 Fast**）で一括生成する場合は [README_SOP.md](README_SOP.md) の Imagen 手順。要約: `GEMINI_API_KEY` を設定し、`node src/generate_images.mjs episodes/<フォルダ> --write-manifest` のあと `node src/build_slides.mjs` を実行。
+
+5. **Discord 等用サムネ**（先頭スライドの**全景**を OG 画像にする）: 初回 `npx playwright install chromium` のあと `npm run capture:share` → `npm run build:share` で `share/previews/*.png` と `share/*.html` を更新（詳細は [README_SOP.md](README_SOP.md) のデプロイ節）。
 
 ## ドキュメント
 
