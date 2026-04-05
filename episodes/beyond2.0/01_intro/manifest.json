@@ -1,0 +1,129 @@
+{
+    "id": "beyond-01",
+    "series": "Beyond 2.0",
+    "title": "第1章：導入 ― 単語帳の「不誠実さ」に立ち止まる",
+    "description": "英単語12,000語を「自動生成」し「開放」するためのプロジェクトBeyond 2.0の始動。既存単語帳の問題から、ARF・WordNet・AIを用いた論理的な自動生成手法までを一気に解説します。次回は手法の詳細をさらに深掘りします。",
+    "chapters": [
+        { "time": "0:00", "title": "導入：単語帳への違和感" },
+        { "time": "1:20", "title": "Database 4500の正体：抜粋の穴" },
+        { "time": "2:10", "title": "既存リスト（SVL/JACET）の限界" },
+        { "time": "3:00", "title": "努力のロックイン：著作権の壁" },
+        { "time": "4:45", "title": "解決：Beyond 2.0の論理的生成手法" },
+        { "time": "6:30", "title": "結び：データの主権を取り戻す" }
+    ],
+    "style": {
+        "theme": "stylish-relaxed",
+        "primaryColor": "#3b82f6",
+        "backgroundColor": "#ffffff"
+    },
+    "slides": [
+        {
+            "range": [6, 7],
+            "title": "Beyond 2.0：英単語12,000語を「開放」する",
+            "content": "<div class='text-center space-y-4'><p class='text-5xl font-extrabold tracking-tight' style='color: var(--accent-color);'>Beyond 2.0</p><p class='text-xl text-gray-500 font-bold'>英単語12,000語を「自動生成」し「開放」する</p><div class='inline-block px-8 py-3 rounded-xl text-lg bg-blue-50 text-blue-600 font-bold border-2 border-blue-200 mt-6'>第1章：導入 ― 単語帳の「不誠実さ」に立ち止まる</div></div>",
+            "imgDesc": "Minimalist digital network nodes connecting to form a book shape, clean white background, cyan and blue colors"
+        },
+        {
+            "range": [9, 9],
+            "title": "本屋の棚に並ぶ「完璧な顔」たち",
+            "content": "<div class='flex flex-col gap-4'><p class='text-lg'>英語コーナーに行くと、圧倒されますよね。</p><div class='grid grid-cols-3 gap-4'><div class='bubble bubble-accent p-4 text-center text-xl font-bold'>Database</div><div class='bubble bubble-accent p-4 text-center text-xl font-bold'>Duo</div><div class='bubble bubble-accent p-4 text-center text-xl font-bold'>ターゲット</div></div><p class='text-xl mt-4'>どれも<strong>「これ一冊で完璧」</strong>という顔をして並んでいます。</p></div>",
+            "imgDesc": "A minimalist bookstore shelf with three books standing proudly, glowing slightly with a blue aura"
+        },
+        {
+            "range": [11, 11],
+            "title": "拭いきれない「不誠実さ」の正体",
+            "content": "<div class='bubble bubble-accent bg-blue-50/30'><p class='text-2xl font-bold text-center mb-4'>構造的な不誠実さ</p><p class='text-lg leading-loose'>単語帳というプロダクトが抱えている、ある「構造的な欠陥」についてお話ししたいと思います。</p></div>",
+            "imgDesc": "A magnifying glass looking at a block of text, revealing hidden empty spaces or gaps behind the words"
+        },
+        {
+            "range": [17, 20],
+            "title": "Database 4500の正体",
+            "content": "<div class='flex flex-col items-center gap-6'><p class='text-3xl font-bold'>タイトル：4,500語</p><div class='w-full bg-gray-100 rounded-full h-12 overflow-hidden flex'><div class='bg-blue-500 h-full' style='width: 35%;'></div><div class='bg-gray-300 h-full' style='width: 65%;'></div></div><div class='flex justify-between w-full px-2'><p class='text-blue-600 font-bold'>見出し語：約1,600語</p><p class='text-gray-400'>「空白」：約3,000語</p></div><div class='bubble bubble-accent mt-4'><p class='text-lg'>残りの3,000語はどこへ行ったのか？</p></div></div>",
+            "imgDesc": "A progress bar with 35% filled in bright blue and 65% in dull grey, labels indicating 'Seen' and 'Unseen'"
+        },
+        {
+            "range": [21, 21],
+            "title": "「抜粋」という名のブラックボックス",
+            "content": "<div class='space-y-6'><div class='bubble' style='border-left: 8px solid var(--accent-color); border-radius: 0 20px 20px 0;'><p class='text-2xl font-bold'>「君なら当然知っているよね」</p></div><p class='text-lg leading-relaxed text-center'>社会的な共通認識や編纂者の職人芸によって、<br>ブラックボックスの中に放り出されています。</p></div>",
+            "imgDesc": "A stylized black box with icons of words falling out of sight into a void, a question mark hovering above it"
+        },
+        {
+            "range": [22, 23],
+            "title": "学習者を不安にさせる「情報の穴」",
+            "content": "<div class='space-y-6'><p class='text-lg'>著者が「重要・不要」を勝手に間引いた結果、学習者が一生気づくことのできない<strong>「情報の穴」</strong>が生まれます。</p><div class='bg-red-50 p-6 rounded-xl border border-red-100 italic text-red-500 text-center font-bold'>もしその3,000語の中に、<br>あなたの知らない語が混ざっていたら？</div></div>",
+            "imgDesc": "A person standing on a bridge over a deep dark canyon, looking into the mist"
+        },
+        {
+            "range": [29, 31],
+            "title": "既存リスト（SVL/JACET）の限界",
+            "content": "<div class='space-y-4'><div class='bubble bubble-accent bg-gray-50 flex items-center justify-between'><p class='text-lg font-bold'>SVL12000 / JACET</p><p class='text-red-500 font-black'>⚠️ 課題あり</p></div><ul class='list-inside list-disc text-lg space-y-2 text-gray-600'><li>数十年前の「古いデータ」</li><li>「人の手」による強い主観</li><li><strong>著作権による「非公開」の壁</strong></li></ul></div>",
+            "imgDesc": "An old dusty archive folder labeled 'SVL/JACET' tied with red legal tape and marked with a copyright symbol"
+        },
+        {
+            "range": [33, 35],
+            "title": "努力の「ロックイン」",
+            "content": "<div class='flex flex-col gap-6'><div class='relative py-6'><div class='absolute inset-0 flex items-center justify-center'><div class='w-32 h-32 border-8 border-red-500 rounded-full flex items-center justify-center font-black text-red-500 text-4xl opacity-10'>LOCK</div></div><p class='text-xl text-center font-bold text-red-600'>あなたの努力が、<br>著作権によって封鎖されている。</p></div><div class='bubble bubble-accent p-4 text-gray-600 italic'>Ankiに打ち込んだ何百時間ものデータ。<br>それは「共有できない」資産。</div></div>",
+            "imgDesc": "A digital flashcard with a heavy iron padlock over it, red 'No' sign elements in the background"
+        },
+        {
+            "range": [37, 37],
+            "title": "建前上の「権利侵害」",
+            "content": "<div class='bubble bubble-accent bg-red-50 border-red-100'><p class='text-lg'>素晴らしい資産ですが、建前上、あなたはそれを誰にも共有できません。</p></div><p class='text-center text-4xl mt-8 font-black text-red-600 opacity-20'>COPYRIGHT</p>",
+            "imgDesc": "A legal document showing 'STRICTLY PROHIBITED' stamp in red"
+        },
+        {
+            "range": [39, 40],
+            "title": "「グレーな黙認」という不安定さ",
+            "content": "<div class='space-y-4'><p class='text-lg'>実態としての「グレー」な共有デッキ。</p><div class='bg-gray-100 p-6 rounded-2xl border-2 border-dashed border-gray-300'><p class='text-center text-gray-400 font-bold italic'>それは「黙認」されている不安定な状態に過ぎない。</p></div><p class='text-center font-bold'>公式にバトンを渡せる資産にはなり得ない。</p></div>",
+            "imgDesc": "A shadowy figure handing a disk to another, in a foggy back-alley setting"
+        },
+        {
+            "range": [41, 43],
+            "title": "英語学習最大の「リソースの無駄」",
+            "content": "<div class='bubble bubble-accent'><p class='text-lg'>「誰かが一度やれば済むはずの作業」を、ライセンスの壁のせいで全員が強制的にやらされている。</p></div><div class='flex justify-center mt-6'><div class='text-center px-6'><p class='text-4xl'>👥👥👥</p><p class='text-sm text-gray-400 mt-2'>各自がバラバラに作業</p></div><div class='flex items-center text-3xl text-gray-300 mx-4'>→</div><div class='text-center px-6'><p class='text-4xl'>🧱</p><p class='text-sm text-gray-400 mt-2'>社会的な資産にならない</p></div></div>",
+            "imgDesc": "Many small figures sitting at desks in isolation, working on the same task, separated by walls of license text"
+        },
+        {
+            "range": [49, 53],
+            "title": "プロジェクト『Beyond 2.0』始動",
+            "content": "<div class='text-center'><p class='text-2xl font-bold mb-8'>目的はシンプル</p><div class='bubble bubble-accent bg-blue-600 text-white shadow-none'><p class='text-3xl font-bold leading-relaxed px-4'>12,000語を自動生成し、<br>「開放」する</p></div><p class='text-xl mt-8 text-blue-600 font-bold'>誰がやっても同じ結果になる「再現性」</p></div>",
+            "imgDesc": "An open gate made of glowing blue code lines, leading to a bright horizon of data points"
+        },
+        {
+            "range": [55, 56],
+            "title": "論理的な「構築」ステップ",
+            "content": "<div class='space-y-6'><p class='text-xl font-bold'>「職人芸」から「ロジック」へ</p><div class='grid grid-cols-3 gap-2'><div class='p-3 bg-blue-50 rounded-xl text-center font-bold border border-blue-100'>1. ARF</div><div class='p-3 bg-blue-50 rounded-xl text-center font-bold border border-blue-100'>2. WordNet</div><div class='p-3 bg-blue-50 rounded-xl text-center font-bold border border-blue-100'>3. AI</div></div></div>",
+            "imgDesc": "A blueprint showing three distinct machine modules connected in a sequence"
+        },
+        {
+            "range": [57, 58],
+            "title": "1. ARFによる母集団抽出",
+            "content": "<div class='space-y-4'><div class='bubble bubble-accent'><p class='text-2xl font-bold text-center'>ARF (Average Reduced Frequency)</p></div><p class='text-lg'>単純な出現頻度ではなく、コーパス全体に<strong>「広く、均一に」</strong>現れる語を抽出。ノイズを取り除きます。</p></div>",
+            "imgDesc": "A wave signal becoming stable and uniform across a grid"
+        },
+        {
+            "range": [59, 60],
+            "title": "2. WordNetによる生活語の補正",
+            "content": "<div class='space-y-4'><div class='bubble bubble-accent'><p class='text-2xl font-bold text-center'>WordNetによる補完</p></div><p class='text-lg'>統計データに現れにくい「生活に密着した言葉」をデータベースからロジカルに充填します。</p></div>",
+            "imgDesc": "A 3D mesh network filling in the gaps of a standard data chart"
+        },
+        {
+            "range": [61, 64],
+            "title": "3. AIによる最終精査",
+            "content": "<div class='space-y-4'><div class='bubble bubble-accent'><p class='text-2xl font-bold text-center'>AIによる論理的分類</p></div><p class='text-lg'>「少ない労力で、圧倒的な網羅性」。そして最初から「オープンソース」として生成。</p></div>",
+            "imgDesc": "A glowing brain icon processing a list of words, outputting a clean organized column"
+        },
+        {
+            "range": [70, 71],
+            "title": "結び：データの主権を取り戻す",
+            "content": "<div class='bubble bubble-accent'><p class='text-2xl text-center leading-loose font-bold'>データの主権を、学習者自身の手へ。</p></div><p class='text-lg text-center mt-10'>著作権から自由な「12,000語のリスト」を<br>開放する第一歩。</p>",
+            "imgDesc": "A person holding a glowing blue symbol towards the sun on a mountain top"
+        },
+        {
+            "range": [73, 75],
+            "title": "次回予告",
+            "content": "<div class='text-center space-y-8'><p class='text-2xl'>ご清聴いただきありがとうございました。</p><div class='bubble bubble-accent inline-block'><p class='text-xl font-bold px-4'>次回：この手法をより詳しく解説します</p></div></div>",
+            "imgDesc": "A 'Next Episode' screen with a blurry background of words"
+        }
+    ]
+}

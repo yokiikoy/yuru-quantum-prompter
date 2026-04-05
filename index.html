@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ゆる量子力学ラジオ プロンプターツール</title>
+    <title>Kuchi-Draft — スライド／プロンプター</title>
     
     <!-- Google Fonts: Zen Maru Gothic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +18,12 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <style>
+        :root {
+            --accent-color: #8fd3f4;
+            --marker-color: #ffe066;
+            --bubble-shadow: 4px 4px 0px var(--accent-color);
+        }
+
         body {
             font-family: 'Zen Maru Gothic', sans-serif;
             background-color: #f0f7f4;
@@ -30,14 +36,14 @@
             border-radius: 5px;
         }
 
-        /* ゆるふわ: スライドエリア */
+        /* スライドエリア: 白地基調へ変更可能に */
         .slide-area {
-            background-color: #f0f7f4;
-            background-image: radial-gradient(#d1e8df 1.5px, transparent 1.5px);
+            background-color: #ffffff;
+            background-image: radial-gradient(#f0f0f0 1.5px, transparent 1.5px);
             background-size: 24px 24px;
         }
 
-        /* ゆるふわ: タイトルのマーカー装飾 */
+        /* 共通: タイトルのマーカー装飾 (変数対応) */
         #slide-title {
             position: relative;
             display: inline-block;
@@ -50,7 +56,7 @@
             left: -8px;
             right: -8px;
             height: 14px;
-            background-color: #ffe066;
+            background-color: var(--marker-color);
             z-index: -1;
             border-radius: 8px;
             opacity: 0.7;
@@ -78,15 +84,17 @@
             .text-lg { font-size: 0.9rem !important; }
         }
 
-        /* ゆるふわ: バブル (manifest contentから利用) */
+        /* 共通: バブル (変数対応) */
         .bubble {
             background-color: #fff;
             border: 3px solid #4a4a4a;
             border-radius: 20px;
             padding: 20px;
-            box-shadow: 4px 4px 0px #8fd3f4;
+            box-shadow: var(--bubble-shadow);
             margin: 16px 0;
+            transition: box-shadow 0.3s ease;
         }
+        .bubble-accent { box-shadow: 4px 4px 0px var(--accent-color); }
         .bubble-pink { box-shadow: 4px 4px 0px #ff9fb2; }
         .bubble-yellow { box-shadow: 4px 4px 0px #ffe066; }
         .caption {
@@ -99,21 +107,30 @@
         
         /* モバイル対応：バブル内の文字サイズ調整とプロンプターの改善 */
         @media (max-width: 768px) {
-            #slide-content .bubble { padding: 12px; margin: 8px 0; }
-            #slide-content .text-5xl { font-size: 1.875rem !important; line-height: 2.25rem !important; }
-            #slide-content .text-xl { font-size: 1rem !important; line-height: 1.5rem !important; }
-            #slide-content .text-2xl { font-size: 1.25rem !important; line-height: 1.75rem !important; }
-            #slide-content .text-lg { font-size: 0.875rem !important; line-height: 1.25rem !important; }
-            #slide-content .bubble-pink p, #slide-content .bubble-yellow p { font-size: 1rem !important; }
+            #slide-title { font-size: 1.25rem !important; height: auto !important; margin-bottom: 8px !important; }
+            #slide-content .bubble { padding: 8px 12px !important; margin: 6px 0 !important; }
+            #slide-content .text-5xl { font-size: 1.5rem !important; line-height: 1.2 !important; }
+            #slide-content .text-4xl { font-size: 1.3rem !important; }
+            #slide-content .text-3xl { font-size: 1.2rem !important; }
+            #slide-content .text-2xl { font-size: 1.1rem !important; }
+            #slide-content .text-xl { font-size: 1rem !important; line-height: 1.4 !important; }
+            #slide-content .text-lg { font-size: 0.85rem !important; line-height: 1.3 !important; }
+            #slide-content p { font-size: 0.9rem !important; margin-bottom: 4px !important; }
+            #slide-content .bubble-pink p, #slide-content .bubble-yellow p { font-size: 0.95rem !important; }
             
             /* プロンプター内のヘッダー調整 */
             #prompter-box h1 { font-size: 1.25rem !important; margin-top: 1rem !important; }
             #prompter-box h2 { font-size: 1.15rem !important; margin-top: 0.8rem !important; }
             #prompter-box h3 { font-size: 1.05rem !important; margin-top: 0.6rem !important; }
-            #prompter-box p { font-size: 1rem !important; padding-right: 3.5rem !important; } /* ボタン回避用余白 */
+            #prompter-box p { font-size: 1.1rem !important; padding-right: 3.5rem !important; } /* ボタン回避用余白 */
             
             /* 強制非表示設定 */
             .mobile-hidden { display: none !important; }
+        }
+
+        /* [NEW] 溢れ防止のための強制設定 */
+        #slide-content {
+            overflow-y: hidden !important; 
         }
     </style>
 </head>
@@ -122,9 +139,9 @@
     <!-- Top Navigation & Episode Selector -->
     <div class="flex-none bg-slate-900 px-4 md:px-6 py-2 flex justify-between items-center text-white shadow-lg z-50">
         <div class="flex items-center gap-2 md:gap-4 overflow-hidden">
-            <span class="mobile-hidden md:inline text-blue-400 font-black tracking-widest text-lg shrink-0">ゆる量子力学ラジオ</span>
+            <span id="series-logo" class="mobile-hidden md:inline font-black tracking-widest text-lg shrink-0 transition-all duration-500" style="color: var(--accent-color);">ゆる量子力学ラジオ</span>
             <select id="episode-list" class="bg-slate-800 border border-slate-700 rounded-md px-2 md:px-3 py-1 text-xs md:text-sm text-blue-100 outline-none focus:ring-2 focus:ring-blue-500 max-w-[200px] md:max-w-none">
-                <option value="">エピソードを選択中...</option>
+                <option value="">プロジェクトを選択中...</option>
             </select>
         </div>
         <div id="slide-counter" class="text-slate-400 font-bold text-xs md:text-sm tracking-tighter shrink-0">0 / 0</div>
@@ -190,38 +207,150 @@
         const elPrompterBox = document.getElementById('prompter-box');
         const elEpisodeList = document.getElementById('episode-list');
 
-        // [New] Switch to Script-based loader
+        const elSeriesLogo = document.getElementById('series-logo');
+
+        /** URL クエリ ?series=<seriesId>&episode=<ep.id> で初期シリーズ・エピソードを指定（episodes_list.js の seriesId / id と一致） */
+        function parseSeriesFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                seriesId: params.get('series'),
+                episodeId: params.get('episode')
+            };
+        }
+
+        function findProjectBySeriesId(seriesId) {
+            if (!seriesId || typeof projectsData === 'undefined') return null;
+            return projectsData.find(pj => pj.seriesId === seriesId) || null;
+        }
+
+        /** クエリと projectsData から表示するプロジェクト・エピソードを決定（無効な series は先頭シリーズへフォールバック） */
+        function resolveInitialSelection() {
+            const { seriesId, episodeId } = parseSeriesFromUrl();
+            let project = findProjectBySeriesId(seriesId);
+            let usedFallbackSeries = false;
+
+            if (!project && !seriesId && episodeId) {
+                for (const pj of projectsData) {
+                    const ep = pj.episodes && pj.episodes.find(e => e.id === episodeId);
+                    if (ep) {
+                        project = pj;
+                        break;
+                    }
+                }
+            }
+
+            if (!project && projectsData.length > 0) {
+                project = projectsData[0];
+                usedFallbackSeries = !!seriesId;
+            }
+            if (!project || !project.episodes || project.episodes.length === 0) {
+                return { project: null, episode: null, usedFallbackSeries };
+            }
+            let episode = episodeId
+                ? project.episodes.find(ep => ep.id === episodeId)
+                : null;
+            if (!episode) episode = project.episodes[0];
+            return { project, episode, usedFallbackSeries };
+        }
+
+        function selectionValue(seriesId, path) {
+            return `${seriesId}|${path}`;
+        }
+
+        /** ドロップダウン変更後に URL を同期（リロードなし） */
+        function syncUrlQueryFromSelection(seriesId, path) {
+            const project = findProjectBySeriesId(seriesId);
+            const ep = project && project.episodes
+                ? project.episodes.find(e => e.path === path)
+                : null;
+            const url = new URL(window.location.href);
+            url.searchParams.set('series', seriesId);
+            if (ep && ep.id) url.searchParams.set('episode', ep.id);
+            else url.searchParams.delete('episode');
+            const next = url.pathname + url.search + url.hash;
+            if (next !== window.location.pathname + window.location.search + window.location.hash) {
+                history.replaceState(null, '', next);
+            }
+        }
+
+        // Initializer for multi-project list
         function initEpisodeList() {
-            if (typeof episodesData === 'undefined') {
-                console.error("episodesData not found. Make sure episodes_list.js is loaded.");
+            if (typeof projectsData === 'undefined') {
+                console.error("projectsData not found. Make sure episodes_list.js is loaded.");
                 elEpisodeList.innerHTML = '<option value="">データ読み込み失敗</option>';
                 return;
             }
             
-            elEpisodeList.innerHTML = episodesData.map(ep => `<option value="${ep.path}">${ep.title}</option>`).join('');
+            let html = '';
+            projectsData.forEach(pj => {
+                html += `<optgroup label="${pj.seriesTitle}">`;
+                pj.episodes.forEach(ep => {
+                    html += `<option value="${selectionValue(pj.seriesId, ep.path)}">${ep.title}</option>`;
+                });
+                html += `</optgroup>`;
+            });
+            elEpisodeList.innerHTML = html;
             
-            // 初回読み込み
-            if (episodesData.length > 0) {
-                changeEpisode(episodesData[0].path);
+            const urlSel = parseSeriesFromUrl();
+            const hadUrlSelection = !!(urlSel.seriesId || urlSel.episodeId);
+
+            const { project, episode, usedFallbackSeries } = resolveInitialSelection();
+            if (project && episode) {
+                if (usedFallbackSeries) {
+                    console.warn('URL の series が不明なため、先頭シリーズを表示しました:', urlSel.seriesId);
+                }
+                const value = selectionValue(project.seriesId, episode.path);
+                elEpisodeList.value = value;
+                updateSeriesStyle(project);
+                changeEpisode(value, { skipUrlSync: true });
+                if (hadUrlSelection) {
+                    syncUrlQueryFromSelection(project.seriesId, episode.path);
+                }
             }
         }
 
-        function changeEpisode(path) {
+        function updateSeriesStyle(project) {
+            // Update Accent Color
+            document.documentElement.style.setProperty('--accent-color', project.accentColor || '#8fd3f4');
+            elSeriesLogo.innerText = project.seriesTitle;
+            
+            // Optional: Beyond 2.0 specific styling
+            if (project.seriesId === 'beyond') {
+                document.documentElement.style.setProperty('--marker-color', '#93c5fd'); // Softer blue marker
+                document.body.style.backgroundColor = "#f8fafc"; // White/Grey-ish
+            } else {
+                document.documentElement.style.setProperty('--marker-color', '#ffe066');
+                document.body.style.backgroundColor = "#f0f7f4";
+            }
+        }
+
+        function changeEpisode(value, opts) {
+            const skipUrlSync = opts && opts.skipUrlSync;
+            const [seriesId, path] = value.split('|');
+            const project = projectsData.find(pj => pj.seriesId === seriesId);
+            
+            if (project) {
+                updateSeriesStyle(project);
+            }
+            
             currentPath = path;
             currentSlide = 0;
             
-            // 旧スクリプトの削除
+            // Cleanup and Load new slides.js
             const oldScript = document.getElementById('slides-data-script');
             if (oldScript) oldScript.remove();
 
-            // 新スクリプトの挿入
             const script = document.createElement('script');
             script.id = 'slides-data-script';
-            script.src = path + 'slides.js?' + new Date().getTime(); // キャッシュ回避
+            script.src = path + 'slides.js?' + new Date().getTime();
             script.onload = () => {
                 renderSlide();
             };
             document.body.appendChild(script);
+
+            if (!skipUrlSync) {
+                syncUrlQueryFromSelection(seriesId, path);
+            }
         }
 
         elEpisodeList.onchange = (e) => changeEpisode(e.target.value);
@@ -300,6 +429,33 @@
                 prevSlide();
             }
         });
+
+        // [NEW] フリック操作（スワイプ）の実装
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        const slideArea = document.querySelector('.slide-area');
+        
+        slideArea.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        slideArea.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            const threshold = 50; 
+            if (touchendX < touchstartX - threshold) {
+                // 左にスワイプ -> 次へ
+                nextSlide();
+            }
+            if (touchendX > touchstartX + threshold) {
+                // 右にスワイプ -> 前へ
+                prevSlide();
+            }
+        }
 
         window.onload = initEpisodeList;
     </script>
