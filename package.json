@@ -2,7 +2,8 @@
   "name": "kuchi-draft",
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./src/tailwind-input.css -o ./assets/app.css --minify"
+    "build:css": "tailwindcss -i ./src/tailwind-input.css -o ./assets/app.css --minify",
+    "generate:images": "node src/generate_images.mjs"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"

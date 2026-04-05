@@ -21,7 +21,7 @@
 
 - **ローカルルート**: 本ファイルがあるディレクトリ（`ゆる量子力学ラジオ`）がリポジトリルート。
 - **エントリポイント**: 収録用 UI はルートの `index.html`（`episodes_list.js` でシリーズ・エピソードを列挙）。
-- **ビルド**: Node.js。`src/build_slides.mjs` が `manifest.json` + Markdown 原稿から各エピソードの `slides.js` を生成。**スタイル**: `npm run build:css` で Tailwind を `assets/app.css` に出力（Pages 用に CSS はリポジトリへコミット。`index.html` や `episodes/**` のユーティリティクラスを変えたら再実行）。
+- **ビルド**: Node.js。`src/build_slides.mjs` が `manifest.json` + Markdown 原稿から各エピソードの `slides.js` を生成。**スタイル**: `npm run build:css` で Tailwind を `assets/app.css` に出力（Pages 用に CSS はリポジトリへコミット。`index.html` や `episodes/**` のユーティリティクラスを変えたら再実行）。**スライド画像**: `GEMINI_API_KEY` と `src/generate_images.mjs` で **Imagen 4 Fast**（`imagen-4.0-fast-generate-001`）を呼び `episodes/.../images/` に保存可（詳細は `README_SOP.md` §5）。
 
 ---
 
@@ -29,7 +29,7 @@
 
 ### スコープ
 
-- ブラウザ上で **スライド（HTML 演出）** と **台本（原稿から行範囲で抜いた verbatim）** を同期表示する **プロンプター兼スライドビューア**。
+- ブラウザ上で **スライド（HTML 演出）** と **台本（原稿から行範囲で抜いた verbatim）** を同期表示する **プロンプター兼スライドビューア**。**リスナー・非同期閲覧**も想定し、スライドは図表・アイコン等で**スタンドアロンで読みやすい**ことを優先（詳細は `DESIGN_GUIDE.md`）。
 - エピソード単位のフォルダに **原稿 Markdown**、**manifest.json**（スライド定義・行番号 `range`）、ビルド生成の **slides.js**、任意で画像。
 - 複数シリーズを `episodes_list.js` の `projectsData` で束ねる。
 
@@ -70,6 +70,7 @@
 | `episodes_list.js` | シリーズ・エピソード一覧と `slides.js` への相対パス。 |
 | `episodes/<シリーズまたは回>/` | エピソード単位。原稿 `草稿1.md`（またはフォルダ内の .md）、`manifest.json`、生成 `slides.js`、画像など。 |
 | `src/build_slides.mjs` | manifest + 原稿 → `slides.js` 生成（`node` で実行）。 |
+| `src/generate_images.mjs` | `manifest.json` の `imgDesc` + ベースプロンプトで **Imagen 4 Fast** 画像生成（`GEMINI_API_KEY`・追加 npm 依存なし）。 |
 | `src/serve.mjs` | ローカルプレビュー用の静的サーバ（`node` のみ・既定ポート 8765）。 |
 | `DESIGN_GUIDE.md` | スライド HTML・CSS クラスのリファレンス。 |
 | `README_SOP.md` | 制作者向け SOP（エージェント向けの「正本」ではないが手順の詳細）。 |
@@ -126,3 +127,6 @@
 - **2026-04-05**: プレビュー用 `src/serve.mjs` を追加。ビルド〜ローカル確認は **Node + ブラウザのみ**。
 - **GitHub リポジトリ名を `kuchi-draft` に統一**: ローカル `origin` を `https://github.com/yokiikoy/kuchi-draft.git` に更新。`README_SOP.md` の Pages 例 URL、`AGENTS.md` のリモート名を同期。
 - **表示パフォーマンス**: Tailwind の **JIT CDN**・**polyfill.io**・**MathJax** をやめ、`npm run build:css` で **`assets/app.css`（約14KB minify）** を配信。スライド HTML に LaTeX が無い限り数式レンダリングは行わない（台本の `$$` はプレーン表示）。
+- **2026-04-05**: 対象読者を**話者＋リスナー・非同期閲覧**に明記。`DESIGN_GUIDE.md` §8 を「厳格な短文化」から**文字量推奨レンジ（図表・アイコン活用）**へ更新。`README.md`・`README_SOP.md`・本ファイルのスコープ記述を同期。
+- **2026-04-05**: スライド画像のバッチ生成用に `src/generate_images.mjs`。**Gemini API（Imagen 4 Fast）**、`--dry-run` / `--write-manifest` / `--skip-existing` / `--max-api-calls**。`.env` は `.gitignore`。手順は `README_SOP.md` §5。
+- **2026-04-05**: Imagen ベースプロンプトで**画像内の文字を原則禁止**（`imgDesc` で明示した場合のみ。記号のみ可）。`DESIGN_GUIDE.md`・`README_SOP.md` に運用を追記。

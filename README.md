@@ -1,6 +1,6 @@
 # Kuchi-Draft
 
-ポッドキャスト収録用に、**スライド（見た目）**と**原稿ベースの台本**を同期表示する静的サイトです。複数シリーズ（例: ゆる量子力学ラジオ）のエピソードを `episodes_list.js` で切り替えます。
+ポッドキャスト収録用に、**スライド（見た目）**と**原稿ベースの台本**を同期表示する静的サイトです。**話者向けプロンプター**であると同時に、**リスナーや後からページだけ見る人**向けに、図表・デザインで読めるミニ資料になることを目指します。複数シリーズ（例: ゆる量子力学ラジオ）のエピソードを `episodes_list.js` で切り替えます。
 
 ## すぐ使う
 
@@ -28,6 +28,8 @@
    初期表示のシリーズはクエリで指定できます（`episodes_list.js` の `seriesId` と各エピソードの `id`）。例: `http://127.0.0.1:8765/?series=beyond&episode=01`
 
    **表示が崩れたら** `npm run build:css` を再実行し、`assets/app.css` を更新してからデプロイしてください。
+
+4. **スライド右ペイン用の画像**を Gemini API（**Imagen 4 Fast**）で一括生成する場合は [README_SOP.md](README_SOP.md) §5。要約: `GEMINI_API_KEY` を設定し、`node src/generate_images.mjs episodes/<フォルダ> --write-manifest` のあと `node src/build_slides.mjs` を実行。
 
 ## ドキュメント
 

@@ -2,166 +2,274 @@
     "source": "草稿1.md",
     "slides": [
         {
-            "range": [1, 3],
+            "range": [
+                1,
+                3
+            ],
             "title": "📻 ゆる量子力学ラジオ #1",
-            "content": "<div class='text-center space-y-4'><p class='text-5xl font-bold' style='text-shadow: 3px 3px 0px #8fd3f4;'>ゆる量子力学ラジオ</p><div class='inline-block px-6 py-2 rounded-full text-xl text-white font-bold' style='background:#ff9fb2; transform:rotate(2deg);'>第1回：量子力学という「仕様書」を読み解く</div><p class='text-sm' style='color:#7a7a7a;'>学習整理用のメモとして聴いてください</p></div>",
-            "imgDesc": "Simple radio tower with signal waves, stars, minimalist flat vector pastel"
+            "content": "<div class='text-center space-y-3'><p class='text-6xl font-bold' style='text-shadow: 3px 3px 0px #8fd3f4;'>ゆる量子力学ラジオ</p><div class='inline-block px-6 py-2 rounded-full text-2xl text-white font-bold' style='background:#ff9fb2; transform:rotate(2deg);'>第1回：量子力学という「仕様書」を読み解く</div><p class='text-base' style='color:#7a7a7a;'>学習整理用のメモとして聴いてください</p><div style='display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:12px;'><span class='text-sm' style='background:#fff; padding:4px 10px; border-radius:999px; border:2px solid #8fd3f4;'>🎧 音声なしでもこのスライドで流れが掴める構成</span><span class='text-sm' style='background:#fff; padding:4px 10px; border-radius:999px; border:2px solid #d1e8df;'>📖 台本エリアに原稿の全文</span></div></div>",
+            "imgDesc": "Simple radio tower with signal waves, stars, minimalist flat vector pastel",
+            "imageSrc": "images/slide-01.png"
         },
         {
-            "range": [5, 9],
+            "range": [
+                5,
+                9
+            ],
             "title": "自己紹介と、形にした理由",
-            "content": "<div class='bubble'><p class='text-sm' style='margin:0;'>職業としては続けず、趣味で物理学を学ぶ立場。</p></div><p class='text-sm mt-2'>孤独な学習の反動で、思考を一度<strong>形</strong>にしてみたい。</p>",
-            "imgDesc": "Stick figure at desk with books and tea, soft pastel nerdy flat style"
+            "content": "<p class='text-base mb-2'>🙋 <strong>話者の立場</strong>：物理学は職業ではなく、長年の趣味として学んできた一学習者です。</p><div class='bubble'><p class='text-base' style='margin:0;'>専門の研究職ではないので、肩肘張らずに「一緒に整理する」トーンで話します。</p></div><div class='bubble bubble-pink mt-2'><p class='text-base' style='margin:0;'>💭 孤独な学習の反動で、積み上げた考えを一度<strong>形</strong>にしたい —— それが今回の動機です。</p></div><p class='text-sm text-gray-500 mt-2'>※ この回は「量子そのもの」より、<strong>なぜそう語られるか</strong>の土台づくりが中心です。</p>",
+            "imgDesc": "Stick figure at desk with books and tea, soft pastel nerdy flat style",
+            "imageSrc": "images/slide-02.png"
         },
         {
-            "range": [11, 14],
+            "range": [
+                11,
+                14
+            ],
             "title": "なぜ「量子力学」か",
-            "content": "<p class='text-sm'>最も<strong>誤解され、魅力的に語られすぎ</strong>ている分野。</p><div class='bubble bubble-pink mt-2'><p class='text-sm text-center' style='margin:0;'>魔法ではなく、冷徹な論理の仕様書</p></div>",
-            "imgDesc": "Bookshelf half sparkly new age half dry textbooks, flat illustration"
+            "content": "<p class='text-base'>🎯 テーマに選んだ理由はシンプルです。この分野が現代で<strong>最も誤解され、かつ魅力的に語られすぎている</strong>から。</p><div style='display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px;'><div class='bubble p-2'><p class='text-sm font-bold' style='margin:0; color:#7a7a7a;'>書店で見かける物語</p><p class='text-sm' style='margin:6px 0 0;'>意識が現実を創る・運命が変わる… などのキラキラした語り</p></div><div class='bubble bubble-pink p-2'><p class='text-sm font-bold' style='margin:0; color:#7a7a7a;'>ここで見たい正体</p><p class='text-sm' style='margin:6px 0 0;'>魔法ではなく、冷徹な<strong>論理の仕様書</strong>としての量子力学</p></div></div>",
+            "imgDesc": "Bookshelf half sparkly new age half dry textbooks, flat illustration",
+            "imageSrc": "images/slide-03.png"
         },
         {
-            "range": [15, 19],
+            "range": [
+                15,
+                19
+            ],
             "title": "物理学＝未来を予言する技術",
-            "content": "<p class='text-sm'>量子の前に、古典が何を信じたか。</p><div class='bubble bubble-yellow mt-2'><p class='text-xl text-center font-bold' style='margin:0;'>未来を予言する技術</p></div><p class='text-xs text-gray-500 mt-2 text-center'>少し思考実験に付き合ってください</p>",
-            "imgDesc": "Crystal ball with tiny gears inside, playful flat vector"
+            "content": "<p class='text-base'>⚛️ 量子の話の<strong>前</strong>に、それ以前の物理学が何を信じていたかをはっきりさせます。</p><div class='bubble bubble-yellow mt-2'><p class='text-2xl text-center font-bold' style='margin:0;'>未来を予言する技術</p></div><p class='text-base mt-2'>ここでは物理学を、少し挑発的にこう定義します。「何をしてる学問か」と聞かれたときの<strong>答えのひとつ</strong>として。</p><p class='text-sm text-gray-500 mt-2 text-center'>🧪 次のスライドから、ライフル銃の思考実験でイメージを固めます</p>",
+            "imgDesc": "Crystal ball with tiny gears inside, playful flat vector",
+            "imageSrc": "images/slide-04.png"
         },
         {
-            "range": [21, 25],
+            "range": [
+                21,
+                25
+            ],
             "title": "思考実験：固定されたライフル",
-            "content": "<p class='text-sm'>万力固定のライフル、1km先の標的。神の視点でデータが揃えば？</p><div class='bubble mt-2'><p class='text-xs' style='margin:0;'>重量・火薬・銃身・空気・風・湿度… を運動方程式へ</p></div>",
-            "imgDesc": "Rifle in a vice dashed line to distant target, minimal line art"
+            "content": "<p class='text-base'>🔫 目の前に<strong>万力で固定</strong>されたライフル。あなたは1km先の小さな標的を狙うスナイパー。</p><div class='bubble mt-2'><p class='text-sm' style='margin:0;'><strong>神の視点</strong>ですべてのデータが揃うとしたら？ 弾の重量・火薬・銃身精度・熱歪み・1kmの空気・風・湿度・マグヌス効果… を<strong>運動方程式</strong>へ。</p></div><p class='text-sm mt-2' style='color:#7a7a7a;'>💡 ポイントは「引き金の<strong>前</strong>に、着弾点が計算上わかる」という世界観です。</p>",
+            "imgDesc": "Rifle in a vice dashed line to distant target, minimal line art",
+            "imageSrc": "images/slide-05.png"
         },
         {
-            "range": [28, 31],
+            "range": [
+                28,
+                31
+            ],
             "title": "計算完了＝未来確定",
-            "content": "<div class='bubble bubble-yellow'><p class='text-lg text-center font-bold' style='margin:0;'>引く前に、弾の着弾を予言できる</p></div><p class='text-xs text-gray-500 mt-2 text-center'>偶然の余地なし、必然の連鎖</p>",
-            "imgDesc": "Two gears labeled cause and effect linked by chain, simple flat"
+            "content": "<div class='bubble bubble-yellow'><p class='text-2xl text-center font-bold' style='margin:0;'>引く前に、弾の着弾を予言できる</p></div><p class='text-base mt-2 text-center'>計算が終わった瞬間、弾の未来はもう<strong>確定</strong>している —— という古典のイメージ。</p><div style='display:flex; justify-content:center; gap:16px; margin-top:10px; flex-wrap:wrap;'><span class='text-sm' style='background:#fff; padding:6px 12px; border-radius:8px; border:2px solid #8fd3f4;'>🔗 原因 → 結果</span><span class='text-sm' style='background:#fff; padding:6px 12px; border-radius:8px; border:2px solid #d1e8df;'>🚫 偶然の余地なし</span></div><p class='text-sm text-gray-500 mt-2 text-center'>リンゴもロケットも、同じ「因果の連鎖」という信念の上にあります。</p>",
+            "imgDesc": "Two gears labeled cause and effect linked by chain, simple flat",
+            "imageSrc": "images/slide-06.png"
         },
         {
-            "range": [32, 34],
+            "range": [
+                32,
+                34
+            ],
             "title": "ラプラスの引用",
-            "content": "<div class='bubble' style='border-left:6px solid #4a4a4a; border-radius:0 20px 20px 0;'><p class='text-xs italic' style='margin:0;'>すべての原子の位置と運動量が分かれば、未来も過去も展開されている…</p></div>",
-            "imgDesc": "Silhouette demon observing clockwork universe, minimal editorial"
+            "content": "<p class='text-base mb-2'>📜 18世紀フランスの数学者ラプラス。著書の中の思考実験は、決定論の<strong>全能感</strong>を象徴します。</p><div class='bubble' style='border-left:6px solid #4a4a4a; border-radius:0 20px 20px 0;'><p class='text-sm italic' style='margin:0; line-height:1.7;'>「ある瞬間の宇宙のすべての原子の位置と運動量を把握し、解析できる知性がいれば、不確実なものは何一つなく、未来も過去も目の前に展開されているだろう」</p></div><p class='text-sm text-gray-500 mt-2'>※ 意訳・要約。ニュアンスは「完全情報があれば宇宙は読める」です。</p>",
+            "imgDesc": "Silhouette demon observing clockwork universe, minimal editorial",
+            "imageSrc": "images/slide-07.png"
         },
         {
-            "range": [34, 37],
+            "range": [
+                34,
+                37
+            ],
             "title": "ラプラスの悪魔",
-            "content": "<p class='text-sm'>宇宙の<strong>仕様</strong>さえ完璧なら、日食も天気も夕飯の選択も計算できる、という全能感。</p>",
-            "imgDesc": "Tiny figure beside enormous deterministic clockwork sphere"
+            "content": "<p class='text-base'>👿 これが物理学史でもっとも傲慢で魅力的な概念のひとつ、<strong>ラプラスの悪魔</strong>です。</p><div class='bubble mt-2'><p class='text-base' style='margin:0;'>宇宙という巨大な時計の<strong>仕様（How）</strong>さえ完璧にわかれば、日食・天気・脳内分子から導かれる夕飯の選択まで、計算で導ける —— と信じられていました。</p></div><p class='text-sm mt-2' style='color:#7a7a7a;'>世界は「あらかじめ書かれた脚本」通りの自動機械、という絵です。</p>",
+            "imgDesc": "Tiny figure beside enormous deterministic clockwork sphere",
+            "imageSrc": "images/slide-08.png"
         },
         {
-            "range": [38, 44],
+            "range": [
+                38,
+                44
+            ],
             "title": "天文学の勝利",
-            "content": "<div style='display:grid; grid-template-columns:1fr 1fr; gap:6px;'><div class='bubble bubble-pink p-2'><p class='text-xs' style='margin:0;'>彗星＝不吉 →</p></div><div class='bubble p-2'><p class='text-xs' style='margin:0;'>ニュートン＋ハレーで76年後を予言</p></div><div class='bubble bubble-yellow p-2' style='grid-column:1/-1;'><p class='text-xs text-center' style='margin:0;'>海王星：紙の計算だけで発見</p></div></div>",
-            "imgDesc": "Hand with pencil pointing at empty spot on star chart"
+            "content": "<p class='text-base mb-2'>🔭 その確信を支えたのが、天文学の<strong>連続した成功体験</strong>でした。</p><div style='display:grid; grid-template-columns:1fr 1fr; gap:6px;'><div class='bubble bubble-pink p-2'><p class='text-sm font-bold' style='margin:0;'>ハレー彗星</p><p class='text-sm' style='margin:6px 0 0;'>不吉な兆し → ニュートン力学で<strong>76年後</strong>を予言し、的中</p></div><div class='bubble p-2'><p class='text-sm font-bold' style='margin:0;'>海王星</p><p class='text-sm' style='margin:6px 0 0;'>天王星のズレから<strong>紙の計算だけ</strong>で位置を指示 → 望遠鏡で発見</p></div><div class='bubble bubble-yellow p-2' style='grid-column:1/-1;'><p class='text-sm text-center' style='margin:0;'>✨ 「How（数式）さえ知っていれば、未来は明け渡してくれる」という輝き</p></div></div>",
+            "imgDesc": "Hand with pencil pointing at empty spot on star chart",
+            "imageSrc": "images/slide-09.png"
         },
         {
-            "range": [45, 49],
+            "range": [
+                45,
+                49
+            ],
             "title": "決定論の城壁",
-            "content": "<p class='text-sm text-center'>How が分かれば未来は明け渡される ——</p><div class='bubble bubble-pink mt-2'><p class='text-sm text-center' style='margin:0;'>原子スケールへ縮めると城壁が崩れ始める</p></div>",
-            "imgDesc": "Brick wall with thin cracks light leaking through"
+            "content": "<p class='text-base text-center'>🏰 しかしこの<strong>決定論の城壁</strong>は、見えるサイズから<strong>原子スケール</strong>へ縮めると、あっけなく崩れ始めます。</p><div class='bubble bubble-pink mt-2'><p class='text-base text-center' style='margin:0;'>マクロでは完璧だった「一発の予言」が、ミクロの境界で揺らぐ</p></div><p class='text-sm text-gray-500 mt-2 text-center'>第2章へ：装置はシンプル、結論は残酷、という二重スリットへ。</p>",
+            "imgDesc": "Brick wall with thin cracks light leaking through",
+            "imageSrc": "images/slide-10.png"
         },
         {
-            "range": [52, 58],
+            "range": [
+                52,
+                58
+            ],
             "title": "第2章：二重スリット",
-            "content": "<p class='text-sm'>電子も野球ボールと同じ方程式でいけるはず、という期待。</p><div class='bubble mt-2'><p class='text-center font-bold' style='margin:0;'>二重スリット実験</p><p class='text-xs text-center' style='margin:4px 0 0;'>シンプルだが残酷</p></div>",
-            "imgDesc": "Wall with two slits gun and screen schematic flat diagram"
+            "content": "<p class='text-base'>⚛️ 当時の期待：電子も野球ボールと<strong>同じ方程式</strong>で、スケールダウンすれば完璧に予言できるはず。</p><div class='bubble mt-2'><p class='text-center text-xl font-bold' style='margin:0;'>二重スリット実験</p><p class='text-base text-center' style='margin:6px 0 0;'>セットは単純。だからこそ、結果の「残酷さ」が際立ちます。</p></div><p class='text-sm mt-2' style='color:#7a7a7a;'>🔬 電子銃・2つのスリット・スクリーンの3点セットで、古典の常識が壊れます。</p>",
+            "imgDesc": "Wall with two slits gun and screen schematic flat diagram",
+            "imageSrc": "images/slide-11.png"
         },
         {
-            "range": [60, 67],
+            "range": [
+                60,
+                67
+            ],
             "title": "BB弾なら健全",
-            "content": "<p class='text-xs'>電子銃・スリット・スクリーン。</p><div class='bubble mt-2'><p class='text-sm' style='margin:0;'>BB弾なら右狙い→右、左→左。2本の縦線。予言が効く。</p></div>",
-            "imgDesc": "Three icons gun slits screen in a row cute flat"
+            "content": "<p class='text-base mb-2'>🎯 まず比較として<strong>BB弾</strong>。スリットは弾が通れる幅に。</p><div class='bubble mt-2'><p class='text-base' style='margin:0;'>右の隙間を狙えば右に、左なら左。バラ撃きでもスクリーンには<strong>2本の縦線</strong>。「右を通ったものは右へ」が成り立つ、<strong>健全</strong>な予言です。</p></div><div style='display:flex; justify-content:center; gap:10px; margin-top:10px; font-size:26px;'><span>🔫</span><span>➡️</span><span>▯▯</span><span>➡️</span><span>📺</span></div><p class='text-sm text-center text-gray-500 mt-1'>銃 → スリット → スクリーン（イメージ）</p>",
+            "imgDesc": "Three icons gun slits screen in a row cute flat",
+            "imageSrc": "images/slide-12.png"
         },
         {
-            "range": [68, 78],
+            "range": [
+                68,
+                78
+            ],
             "title": "電子の屈辱",
-            "content": "<p class='text-xs'>固定・同一条件で1発ずつ → 着弾が<strong>バラバラ</strong>。</p><div class='bubble bubble-pink mt-2'><p class='text-xs text-center' style='margin:0;'>次の1発を誰も予言できない</p></div>",
-            "imgDesc": "Target screen with random dots and big question mark"
+            "content": "<p class='text-base'>⚡ 電子に替え、銃を固定し、<strong>1発ずつ</strong>、ノイズのない条件で撃つ。</p><div class='bubble bubble-pink mt-2'><p class='text-base text-center' style='margin:0;'>次の1発がどこに行くか、<strong>誰にも予言できない</strong></p></div><p class='text-sm mt-2'>装置検査・真空・低温でも結果は変わらない —— 固定銃なのに行方が読めない、という<strong>ミクロでの屈辱</strong>。</p><p class='text-sm text-gray-500 mt-1'>数百年磨いた「予言」という武器が、2つの隙間の前で無力化されました。</p>",
+            "imgDesc": "Target screen with random dots and big question mark",
+            "imageSrc": "images/slide-13.png"
         },
         {
-            "range": [79, 83],
+            "range": [
+                79,
+                83
+            ],
             "title": "ノイズを消しても",
-            "content": "<p class='text-sm'>徹底チェック・真空・低温でも結果は変わらない。固定銃なのに行方が読めない。</p>",
-            "imgDesc": "Laboratory equipment around double slit unchanged result symbol"
+            "content": "<p class='text-base'>🧊 徹底チェック・真空・低温。外部ノイズを限りなく減らしても、<strong>結論は変わらない</strong>。</p><div class='bubble mt-2'><p class='text-base' style='margin:0;'>「同じ条件のはずなのに次が読めない」は、測定ミスでは片付けにくい —— というのが当時のショックでした。</p></div><p class='text-sm text-gray-500 mt-2'>💭 比喩：無風の室内の固定銃なのに、1発目は的・2発目は天井… のような<strong>世界の拒否</strong>。</p>",
+            "imgDesc": "Laboratory equipment around double slit unchanged result symbol",
+            "imageSrc": "images/slide-14.png"
         },
         {
-            "range": [84, 94],
+            "range": [
+                84,
+                94
+            ],
             "title": "神はサイコロを振らない → でも",
-            "content": "<div class='bubble'><p class='text-xs italic text-center' style='margin:0;'>God doesn't play dice.</p></div><p class='text-xs mt-2'>実験は<strong>確率</strong>でしか語らない。諦め：一発は捨て、<strong>分布</strong>なら完璧に予言する。</p>",
-            "imgDesc": "Stick figure Einstein tossing dice into fog flat humorous"
+            "content": "<p class='text-base'>🎲 アインシュタインの有名な言葉は、<strong>因果の美しさ</strong>への執着の表れ。</p><div class='bubble'><p class='text-sm italic text-center' style='margin:0;'>God doesn't play dice.</p></div><p class='text-base mt-2'>しかし実験は<strong>確率</strong>でしか語らない。人類の苦渋の決断：</p><div class='bubble bubble-yellow mt-2'><p class='text-base text-center' style='margin:0;'>一発の行方は諦める。その代わり<strong>分布（1万発の模様）</strong>なら完璧に予言する</p></div><p class='text-sm text-gray-500 mt-2'>点の全能感から、確率の雲へのシフト —— それが量子の時代の入り口です。</p>",
+            "imgDesc": "Stick figure Einstein tossing dice into fog flat humorous",
+            "imageSrc": "images/slide-15.png"
         },
         {
-            "range": [98, 105],
+            "range": [
+                98,
+                105
+            ],
             "title": "第3章：大人の妥協",
-            "content": "<div class='bubble bubble-yellow'><p class='text-sm text-center' style='margin:0;'>1万発の「模様」なら一分の狂いもなく</p></div><p class='text-xs text-gray-500 mt-2 text-center'>個人は追わない、集団は支配する</p>",
-            "imgDesc": "Many dots forming clear interference stripes from far view"
+            "content": "<p class='text-base'>📊 物理学者はそこで、冷徹な<strong>大人の妥協</strong>をします。</p><div class='bubble bubble-yellow'><p class='text-base text-center' style='margin:0;'>1万発の「模様」なら一分の狂いもなく</p></div><p class='text-base mt-2 text-center'><strong>個人（1発）</strong>は追わない。<strong>集団（分布）</strong>は支配する —— パラダイムの転換。</p><div style='display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:8px;'><div class='bubble p-2'><p class='text-sm' style='margin:0; text-align:center;'>❓ 次の1発</p></div><div class='bubble bubble-pink p-2'><p class='text-sm' style='margin:0; text-align:center;'>✅ 万発の縞模様</p></div></div>",
+            "imgDesc": "Many dots forming clear interference stripes from far view",
+            "imageSrc": "images/slide-16.png"
         },
         {
-            "range": [107, 114],
+            "range": [
+                107,
+                114
+            ],
             "title": "ソシャゲ運営視点",
-            "content": "<p class='text-xs'>次の1回でSSRかは誰にも不明。でも100万人×100回の利益はほぼ予言できる。</p><div class='bubble mt-2'><p class='text-xs' style='margin:0; text-align:center;'>宇宙のガチャ運営者としての全能感</p></div>",
-            "imgDesc": "Phone gacha question marks vs bell curve revenue chart split panel"
+            "content": "<p class='text-base'>🎮 身近な例：<strong>ソーシャルゲームの運営視点</strong>。</p><div class='bubble mt-2'><p class='text-base' style='margin:0;'>次の1回でSSRが出るかは、その瞬間は誰にも不明。でも100万人×100回の<strong>利益と排出数</strong>は、ほぼ確実に予言できる。</p></div><p class='text-sm mt-2 text-center' style='color:#7a7a7a;'>個別ユーザー（電子）の運命は不明。システム全体（分布）は数式通り —— <strong>宇宙のガチャ運営者</strong>の全能感。</p>",
+            "imgDesc": "Phone gacha question marks vs bell curve revenue chart split panel",
+            "imageSrc": "images/slide-17.png"
         },
         {
-            "range": [116, 119],
+            "range": [
+                116,
+                119
+            ],
             "title": "シュレディンガー方程式",
-            "content": "<p class='text-sm'>扱うのは位置そのものより<strong>確率の波</strong>。波の広がりは決定論的に追える。</p><div class='bubble bubble-pink mt-2'><p class='text-xs text-center' style='margin:0;'>ボヤけた仕様の中の冷徹な統計</p></div>",
-            "imgDesc": "Soft probability cloud with precise grid overlay flat"
+            "content": "<p class='text-base'>🌊 分布の予言を支える中核が<strong>シュレディンガー方程式</strong>。式自体の記述は驚くほど決定論的。</p><div class='bubble bubble-pink mt-2'><p class='text-base text-center' style='margin:0;'>扱うのは位置そのものより<strong>確率の波（波動関数）</strong></p></div><p class='text-sm mt-2'>波が1秒後・2秒後にどう広がるかは、方程式で追える。<strong>結果の一点</strong>はサイコロ、<strong>出やすさの進化</strong>は几帳面 —— ボヤけた仕様の中の冷徹な統計、という見立てです。</p>",
+            "imgDesc": "Soft probability cloud with precise grid overlay flat",
+            "imageSrc": "images/slide-18.png"
         },
         {
-            "range": [121, 127],
+            "range": [
+                121,
+                127
+            ],
             "title": "シュレディンガーの猫（定番話）",
-            "content": "<p class='text-xs'>箱・毒・50%… 観測まで重なり —— よく聞く話。</p><div class='bubble mt-2'><p class='text-xs' style='margin:0;'>本来の意図は<strong>真逆</strong>だった</p></div>",
-            "imgDesc": "Closed box with faint cat silhouette question marks"
+            "content": "<p class='text-base'>📦 箱・毒・50%… 「観測まで重なり」 —— <strong>よく聞く話</strong>として消費されがち。</p><div class='bubble mt-2'><p class='text-base' style='margin:0;'>本来の意図は<strong>真逆</strong>に近い：当時の解釈への<strong>渾身のツッコミ（皮肉）</strong>としての例え、という側面が強い、と本編では語ります。</p></div><p class='text-sm text-gray-500 mt-2'>💡 ミーム化すると文脈が抜け、「ミステリアス！」だけが残りやすい典型例。</p>",
+            "imgDesc": "Closed box with faint cat silhouette question marks",
+            "imageSrc": "images/slide-19.png"
         },
         {
-            "range": [129, 134],
+            "range": [
+                129,
+                134
+            ],
             "title": "渾身のツッコミ",
-            "content": "<div class='bubble bubble-pink'><p class='text-xs' style='margin:0;'>そんな理屈なら猫が化け物になる。理論はどこか間違ってる！</p></div><p class='text-xs text-gray-500 mt-2'>賞賛ではなく<strong>皮肉</strong>としての例え</p>",
-            "imgDesc": "Scientist pointing at chalkboard with absurd cat equation"
+            "content": "<div class='bubble bubble-pink'><p class='text-base' style='margin:0; line-height:1.6;'>「そんな理屈なら猫が化け物になる。どこか理論が間違っているはずだ」 —— 賞賛ではなく<strong>批判・皮肉</strong>のための思考実験、という読みが筋です。</p></div><p class='text-base mt-2'>🐱 定番化した猫は、天才たちの<strong>屈辱と妥協の舞台裏</strong>を象徴するジョークでもあります。</p><p class='text-sm text-gray-500 mt-1'>詳しい数式や歴史の細部は台本側に任せ、スライドは論点の看板に留めます。</p>",
+            "imgDesc": "Scientist pointing at chalkboard with absurd cat equation",
+            "imageSrc": "images/slide-20.png"
         },
         {
-            "range": [136, 137],
+            "range": [
+                136,
+                137
+            ],
             "title": "歴史にスベり続けるジョーク",
-            "content": "<p class='text-sm text-center'>文脈が抜け「ミステリアス！」と消費される。</p><p class='text-xs text-gray-500 text-center mt-2'>天才たちの屈辱と妥協の舞台裏</p>",
-            "imgDesc": "Crowd cheering at mystery box one figure facepalming apart"
+            "content": "<p class='text-base text-center'>📣 文脈が抜けると「ミステリアス！」だけが消費される。</p><div class='bubble mt-2'><p class='text-base text-center' style='margin:0;'>本当は語りたかったのは、量子が特別扱いされる<strong>心理と修辞</strong>の方かもしれない、という視点へ繋げます。</p></div><p class='text-sm text-gray-500 text-center mt-2'>次章：なぜ<strong>量子だけ</strong>が「魔法」の語りに乗りやすいのか。</p>",
+            "imgDesc": "Crowd cheering at mystery box one figure facepalming apart",
+            "imageSrc": "images/slide-21.png"
         },
         {
-            "range": [140, 152],
+            "range": [
+                140,
+                152
+            ],
             "title": "第4章：なぜ量子だけ魔法か",
-            "content": "<p class='text-xs'>ダイラタンシーも不思議。でも<strong>意識や運命</strong>を聞かない。</p><div class='bubble bubble-yellow mt-2'><p class='text-xs text-center' style='margin:0;'>量子力学だけが神話に昇格する理由は？</p></div>",
-            "imgDesc": "Cornstarch slime bowl sparkle vs plain fluid side by side"
+            "content": "<p class='text-base'>🥣 ダイラタンシー（非ニュートン流体）も不思議。でも<strong>意識や運命</strong>の話には直結しにくい。</p><div class='bubble bubble-yellow mt-2'><p class='text-base text-center' style='margin:0;'>ではなぜ<strong>量子力学だけ</strong>が神話に昇格しやすいのか？</p></div><p class='text-sm mt-2' style='color:#7a7a7a;'>ここからは「理系がモゴる問い」の例と、流体力学への<strong>なぞらえ</strong>で、語りのクセをほどきます。</p>",
+            "imgDesc": "Cornstarch slime bowl sparkle vs plain fluid side by side",
+            "imageSrc": "images/slide-22.png"
         },
         {
-            "range": [154, 160],
+            "range": [
+                154,
+                160
+            ],
             "title": "理系がモゴる理由（問いの例）",
-            "content": "<div class='bubble bubble-pink p-2'><p class='text-xs' style='margin:0; line-height:1.7;'>波動関数の実体？<br>観測で世界が決まる？<br>多世界が実在？</p></div>",
-            "imgDesc": "Stick figure surrounded by floating question marks"
+            "content": "<p class='text-base mb-2'>❓ 量子でよく出る「モゴり」は、こんな形になりがち：</p><div class='bubble bubble-pink p-2'><p class='text-base' style='margin:0; line-height:1.8;'>波動関数の<strong>実体</strong>は？<br>観測で世界が<strong>決まる</strong>？<br>多世界は<strong>実在</strong>？</p></div><p class='text-sm mt-2 text-gray-500'>※ スライドは<strong>問いの見本掲示</strong>。答えの断定は台本・文献で。</p>",
+            "imgDesc": "Stick figure surrounded by floating question marks",
+            "imageSrc": "images/slide-23.png"
         },
         {
-            "range": [162, 170],
+            "range": [
+                162,
+                170
+            ],
             "title": "流体力学なら同じ問い",
-            "content": "<div style='display:grid; grid-template-columns:1fr 1fr; gap:4px;'><div class='bubble p-2'><p class='text-xs' style='margin:0;'>速度ポテンシャルの実体？</p></div><div class='bubble p-2'><p class='text-xs' style='margin:0;'>水が自覚して乱流？</p></div><div class='bubble p-2' style='grid-column:1/-1;'><p class='text-xs' style='margin:0; text-align:center;'>左巻き渦の並行宇宙？</p></div></div>",
-            "imgDesc": "Two columns absurd technical questions vs plain fluid labels"
+            "content": "<p class='text-base mb-2'>🌊 流体力学に置き換えると、同じ<strong>種類</strong>の問いはこうも聞ける：</p><div style='display:grid; grid-template-columns:1fr 1fr; gap:4px;'><div class='bubble p-2'><p class='text-sm' style='margin:0;'>速度ポテンシャルの<strong>実体</strong>は？</p></div><div class='bubble p-2'><p class='text-sm' style='margin:0;'>水は<strong>自覚</strong>して乱流になる？</p></div><div class='bubble p-2' style='grid-column:1/-1;'><p class='text-sm' style='margin:0; text-align:center;'>左巻き渦の<strong>並行宇宙</strong>？（とっさの例）</p></div></div><p class='text-sm mt-2'>💡 量子だけ特別に「物語」を求められる構造がある、という話の下準備です。</p>",
+            "imgDesc": "Two columns absurd technical questions vs plain fluid labels",
+            "imageSrc": "images/slide-24.png"
         },
         {
-            "range": [171, 181],
+            "range": [
+                171,
+                181
+            ],
             "title": "エンジニア版バグ報告",
-            "content": "<div class='bubble' style='background:#2d2d2d; border-color:#555;'><p class='text-xs font-mono' style='margin:0; color:#4ade80; line-height:1.6;'>&gt; 一時変数の物理アドレスは？<br>&gt; レースの実体は？<br>&gt; else句のデータの保存先は？</p></div>",
-            "imgDesc": "Terminal window with error confused stick figure"
+            "content": "<p class='text-base mb-2'>💻 同じノリをエンジニア風に言い換えると：</p><div class='bubble' style='background:#2d2d2d; border-color:#555;'><p class='text-sm font-mono' style='margin:0; color:#4ade80; line-height:1.7;'>&gt; 一時変数の物理アドレスは？<br>&gt; レースの実体は？<br>&gt; else句のデータの保存先は？</p></div><p class='text-sm mt-2 text-center' style='color:#7a7a7a;'>真面目に How で答えると長くなる話は、台本で。スライドは<strong>トーンの合図</strong>。</p>",
+            "imgDesc": "Terminal window with error confused stick figure",
+            "imageSrc": "images/slide-25.png"
         },
         {
-            "range": [183, 193],
+            "range": [
+                183,
+                193
+            ],
             "title": "誠実に答えると退屈",
-            "content": "<p class='text-xs'>デコヒーレンス、密度行列、非対角要素…</p><div class='bubble mt-2'><p class='text-xs' style='margin:0; text-align:center;'>求められているのは How ではなく<strong>Why の物語</strong></p></div>",
-            "imgDesc": "Stack of thick books hiding a tiny glowing equation orb"
+            "content": "<p class='text-base'>📚 デコヒーレンス、密度行列、非対角要素… <strong>誠実な How</strong>は、求める耳には退屈に聞こえることがある。</p><div class='bubble mt-2'><p class='text-base text-center' style='margin:0;'>場面によって求められているのは How ではなく<strong>Why の物語</strong>、というズレも、量子の語りの熱を説明します。</p></div><p class='text-sm text-gray-500 mt-2'>🎯 方針：物語で飾らず、最終的には How に向き合う —— がこの番組のスタンス。</p>",
+            "imgDesc": "Stack of thick books hiding a tiny glowing equation orb",
+            "imageSrc": "images/slide-26.png"
         },
         {
-            "range": [194, 208],
+            "range": [
+                194,
+                208
+            ],
             "title": "ヨシ！で付き合う",
-            "content": "<p class='text-xs text-center'>直感は裏切るが計算は合う。物語で飾らず How に向き合う。</p><div class='text-center mt-3'><span style='background:#2d2d2d; color:white; padding:8px 28px; border-radius:50px; font-size:22px; font-weight:bold;'>ヨシ！</span></div><div class='bubble mt-3'><p class='text-xs text-center' style='margin:0;'>次回：<strong style='color:#8fd3f4;'>不確定性原理</strong></p></div>",
-            "imgDesc": "Rubber stamp OK on paper desk flat pastel"
+            "content": "<p class='text-base text-center'>直感は裏切るが、計算は合う。<strong>仕様書</strong>として読む態度で付き合う。</p><div class='text-center mt-3'><span style='background:#2d2d2d; color:white; padding:8px 28px; border-radius:50px; font-size:28px; font-weight:bold;'>ヨシ！</span></div><div class='bubble mt-3'><p class='text-base text-center' style='margin:0;'>次回テーマ：<strong style='color:#8fd3f4;'>不確定性原理</strong></p></div><p class='text-sm text-gray-500 mt-2 text-center'>🍵 量子に人生の意味を求めなくてよい。「宇宙の仕様って変だな〜」とゆるく受け入れる、が締めのスタンスです（台本参照）。</p>",
+            "imgDesc": "Rubber stamp OK on paper desk flat pastel",
+            "imageSrc": "images/slide-27.png"
         }
     ]
 }

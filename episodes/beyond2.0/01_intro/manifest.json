@@ -4,11 +4,26 @@
     "title": "第1章：導入 ― 単語帳の「中身」を外から追えるとどうなるか",
     "description": "オープンコーパスと再現可能な手順で約12,000語の骨格を組み立てる Beyond 12000（参照実装 Beyond 1.0）。抜粋・ライセンスの問題から、4段パイプラインとオープン範囲までを整理する。次回はパラメータと監査の実装寄りの話。",
     "chapters": [
-        { "time": "0:00", "title": "第1章：導入" },
-        { "time": "", "title": "第2章：抜粋とライセンス" },
-        { "time": "", "title": "第3章：4段パイプライン" },
-        { "time": "", "title": "第4章：品質と運用" },
-        { "time": "", "title": "第5章：結び" }
+        {
+            "time": "0:00",
+            "title": "第1章：導入"
+        },
+        {
+            "time": "",
+            "title": "第2章：抜粋とライセンス"
+        },
+        {
+            "time": "",
+            "title": "第3章：4段パイプライン"
+        },
+        {
+            "time": "",
+            "title": "第4章：品質と運用"
+        },
+        {
+            "time": "",
+            "title": "第5章：結び"
+        }
     ],
     "style": {
         "theme": "stylish-relaxed",
@@ -18,64 +33,104 @@
     "source": "草稿1.md",
     "slides": [
         {
-            "range": [1, 5],
+            "range": [
+                1,
+                5
+            ],
             "title": "Beyond 12000",
-            "content": "<div class='text-center space-y-3'><p class='text-4xl font-extrabold' style='color: var(--accent-color);'>Beyond 12000</p><p class='text-lg text-gray-600'>12,000語を再現可能に組み立て、オープンに保つ</p><p class='text-sm text-gray-400'>参照実装 Beyond 1.0</p></div>",
-            "imgDesc": "Minimal open book made of connected nodes, white background, blue accents, flat vector"
+            "content": "<div class='text-center space-y-3'><p class='text-6xl font-extrabold' style='color: var(--accent-color);'>Beyond 12000</p><p class='text-2xl text-gray-600'>12,000語を<strong>再現可能</strong>に組み立て、<strong>オープン</strong>に保つ</p><p class='text-base text-gray-500'>参照実装 <strong>Beyond 1.0</strong> ／ 手順とデータを正本に寄せる実験</p><div style='display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:8px;'><span class='text-sm' style='background:#fff; padding:4px 12px; border-radius:999px; border:2px solid var(--accent-color);'>🎧 後からスライドだけでも概要が掴める構成</span><span class='text-sm' style='background:#fff; padding:4px 12px; border-radius:999px; border:2px solid #e5e7eb;'>📎 台本エリアに原稿全文</span></div></div>",
+            "imgDesc": "Minimal open book made of connected nodes, white background, blue accents, flat vector",
+            "imageSrc": "images/slide-01.png"
         },
         {
-            "range": [7, 12],
+            "range": [
+                7,
+                12
+            ],
             "title": "導入：追検証と Beyond 12000",
-            "content": "<p class='text-sm'>エンジニアとして再現性に慣れ、語彙リストの<strong>作り方</strong>も追いたくなる。</p><div class='bubble bubble-accent mt-2'><p class='text-xs' style='margin:0;'>根拠が公開されていないと検証できずもどかしい。</p></div><p class='text-xs mt-2 text-center text-gray-600'><strong>Beyond 12000</strong>：オープンコーパス＋スクリプトで骨格を再現可能に</p>",
-            "imgDesc": "Engineer looking at a transparent flowchart inside a book, minimalist flat vector, blue gray"
+            "content": "<p class='text-base mb-2'>🛠️ <strong>再現性・ビルド文化</strong>にいると、語彙リストの<strong>作り方</strong>も追いたくなる —— この回はその延長のメモです。</p><div class='bubble bubble-accent mt-2'><p class='text-base' style='margin:0;'>根拠や手順が公開されていないと<strong>検証のしようがなく</strong>、もどかしい。本は意図がそれぞれある一方で、<strong>自分で追いたい人</strong>には別のニーズがあります。</p></div><p class='text-sm mt-2 text-center text-gray-600'><strong>Beyond 12000</strong>：オープンコーパス＋スクリプトで骨格を再現可能に。既存帳の置き換えより<strong>整理用メモ・実験記録</strong>に近い位置づけ。</p>",
+            "imgDesc": "Engineer looking at a transparent flowchart inside a book, minimalist flat vector, blue gray",
+            "imageSrc": "images/slide-02.png"
         },
         {
-            "range": [14, 22],
+            "range": [
+                14,
+                22
+            ],
             "title": "「Beyond」の三つの意味",
-            "content": "<div class='space-y-2 text-sm'><div class='bubble p-3'><p style='margin:0;'><strong>1</strong> NGSL の続きとして学べるリスト</p></div><div class='bubble p-3'><p style='margin:0;'><strong>2</strong> 写し・人手中心をコスト面でも追い越したい実験</p></div><div class='bubble bubble-accent p-3'><p style='margin:0;'><strong>3</strong> パイプラインが通れば語数は省力で伸ばせる</p></div></div>",
-            "imgDesc": "Three labeled pillars NGSL pipeline scale, simple icons, editorial flat style"
+            "content": "<p class='text-base mb-2'>📌 名前の <strong>Beyond</strong> に込めた、だいたい三つの意味：</p><div class='space-y-2'><div class='bubble p-3'><p class='text-base' style='margin:0;'><span style='font-size:1.25em;'>1️⃣</span> <strong>NGSL（約3,000語）の続き</strong>として学べるリスト。足場に同じ手順で伸ばす。</p></div><div class='bubble p-3'><p class='text-base' style='margin:0;'><span style='font-size:1.25em;'>2️⃣</span> 「写し・人手中心」を<strong>コスト面からも追い越したい</strong>実験。オープンコーパス＋再現手順へ。</p></div><div class='bubble bubble-accent p-3'><p class='text-base' style='margin:0;'><span style='font-size:1.25em;'>3️⃣</span> <strong>パイプラインが通れば語数は省力で伸ばせる</strong>自負。届ける単位は運用・<strong>ARF</strong> などで <strong>12,000 前後</strong>が妥当、という見立て。</p></div></div>",
+            "imgDesc": "Three labeled pillars NGSL pipeline scale, simple icons, editorial flat style",
+            "imageSrc": "images/slide-03.png"
         },
         {
-            "range": [24, 31],
+            "range": [
+                24,
+                31
+            ],
             "title": "抜粋・ライセンス・正本の置き場所",
-            "content": "<p class='text-xs'>抜粋で何が落ちたか追えないと「なぜここ？」に答えにくい。</p><div class='bubble mt-2'><p class='text-xs' style='margin:0;'>教材リストはライセンスの壁。共有デッキをきれいな資産にしづらい。</p></div><div class='bubble bubble-accent mt-2'><p class='text-xs text-center' style='margin:0;'>同じ手順なら同じリストへ — 正本を手順とデータへ</p></div>",
-            "imgDesc": "Book cover with large number and faded question marks behind pages, flat vector"
+            "content": "<p class='text-base'>📚 表紙の語数と<strong>中身の編集</strong>の関係は、外から見えにくい。抜粋で何が落ちたか追えないと「<strong>なぜこの語？</strong>」に答えづらい。</p><div class='bubble mt-2'><p class='text-base' style='margin:0;'>市販リストは<strong>ライセンスの壁</strong>。暗記アプリの自作カードは多いが、成果物を<strong>オープン資産</strong>として綺麗に共有しづらい。</p></div><div class='bubble bubble-accent mt-2'><p class='text-base text-center' style='margin:0;'>🎯 <strong>同じ手順なら同じリストへ</strong> — 正本を個人の目利きではなく<strong>手順とデータ</strong>へ寄せる試み。</p></div>",
+            "imgDesc": "Book cover with large number and faded question marks behind pages, flat vector",
+            "imageSrc": "images/slide-04.png"
         },
         {
-            "range": [32, 40],
+            "range": [
+                32,
+                40
+            ],
             "title": "パイプライン概要（1/2）",
-            "content": "<p class='text-sm font-bold text-blue-600 mb-2'>Step 1 — OANC から抽出</p><div class='bubble p-3'><p class='text-sm' style='margin:0;'><strong>ARF</strong> で「広く出るか」を見る。生回数だけだとバーストに引っ張られる。</p></div>",
-            "imgDesc": "Corpus cloud with frequency waves smoothing to even bars, flat diagram"
+            "content": "<p class='text-xl font-bold text-blue-600 mb-2'>⚙️ Step 1 — OANC から抽出</p><div class='bubble p-3'><p class='text-base' style='margin:0;'>アメリカ国立コーパス <strong>OANC</strong> からレマと頻度を取得。「生の出現回数」だけだと<strong>文脈のバースト</strong>に引っ張られやすいので、指標 <strong>ARF（平均減少頻度）</strong> でコーパス全体に対してどれだけ<strong>広く</strong>出るかを見る発想。</p></div><p class='text-sm text-gray-500 mt-2'>💡 詳細数値・パラメータは次回、実装寄りに。</p>",
+            "imgDesc": "Corpus cloud with frequency waves smoothing to even bars, flat diagram",
+            "imageSrc": "images/slide-05.png"
         },
         {
-            "range": [41, 48],
+            "range": [
+                41,
+                48
+            ],
             "title": "パイプライン概要（2/2）",
-            "content": "<p class='text-sm font-bold text-blue-600'>Step 2 — NGSL 固定＋マージ</p><p class='text-sm mt-2'>SVL/JACET 本文は同梱しない。クリーンルーム近似＋手元許諾ファイルとの重なりで調整。</p><p class='text-xs text-gray-400 mt-2'>WordNet は弱い補助タグ。自動除外トリガにはしない。</p>",
-            "imgDesc": "Two pipelines merging without touching a locked third box labeled copyright"
+            "content": "<p class='text-xl font-bold text-blue-600'>🔗 Step 2 — NGSL 固定＋マージ</p><p class='text-base mt-2'><strong>NGSL</strong> を先頭に固定し、Beyond 側とマージして 12,000 語。並び・末尾の持ち上げは説明可能なルール（形態素親和・Smooth lift まわり）。</p><div class='bubble bubble-accent mt-2'><p class='text-base' style='margin:0;'><strong>SVL / JACET 本文はリポジトリに同梱しない。</strong>クリーンルーム近似＋手元の<strong>許諾済みファイル</strong>との重なりで調整。</p></div><p class='text-sm text-gray-500 mt-2'><strong>WordNet</strong>：生活語を一気に足すエンジンには使わない。<strong>弱い補助タグ</strong>程度。自動除外トリガには<strong>しない</strong>（Step 3 の補助・監査の目印）。</p>",
+            "imgDesc": "Two pipelines merging without touching a locked third box labeled copyright",
+            "imageSrc": "images/slide-06.png"
         },
         {
-            "range": [50, 57],
+            "range": [
+                50,
+                57
+            ],
             "title": "Step 3 と 4",
-            "content": "<div class='grid grid-cols-1 gap-2 text-sm'><div class='bubble p-3'><strong>Step 3</strong> LLM バッチレビュー → トリアージ。<span class='text-blue-600'>方針 A</span>：除外推奨だけ除外ファイルへ。</div><div class='bubble p-3'><strong>Step 4</strong> NGSL 救済：誤載なら除外から除去して整合。</div></div>",
-            "imgDesc": "LLM chip feeding triage inbox into filter funnel, flat schematic"
+            "content": "<div class='grid grid-cols-1 gap-3 text-base'><div class='bubble p-3'><p style='margin:0 0 6px; font-weight:bold; color:#2563eb;'>🤖 Step 3</p><p style='margin:0;'>LLM にバッチで読ませ、指摘を集める → <strong>トリアージ</strong>。<span class='text-blue-600 font-semibold'>方針 A</span>：除外ファイルへ載せるのは<strong>「除外推奨」だけ</strong>。保留・維持だけでは機械的には除外に書かない。</p></div><div class='bubble p-3'><p style='margin:0 0 6px; font-weight:bold; color:#2563eb;'>🔧 Step 4</p><p style='margin:0;'><strong>NGSL 救済</strong>：誤って除外に載った NGSL を取り除き、マージ実効と整合。</p></div></div>",
+            "imgDesc": "LLM chip feeding triage inbox into filter funnel, flat schematic",
+            "imageSrc": "images/slide-07.png"
         },
         {
-            "range": [59, 67],
+            "range": [
+                59,
+                67
+            ],
             "title": "完全自動ではない、と言い切る",
-            "content": "<p class='text-lg'>人を一切使わないわけではない。</p><div class='bubble bubble-accent'><p class='text-sm' style='margin:0;'>品質は HTML 断面・TSV・任意照合で「どこを人が見るか」を絞る。</p></div>",
-            "imgDesc": "Human magnifying glass over a narrow column of a large spreadsheet"
+            "content": "<p class='text-2xl font-semibold'>👤 人を一切使わないわけではない</p><p class='text-base mt-2'>プロンプト・方針・どこまで機械に任せるかは<strong>設計判断</strong>が入る。完全無人で品質保証とも言わない。</p><div class='bubble bubble-accent mt-2'><p class='text-base' style='margin:0;'>代わりに <strong>監査用 HTML</strong>・<strong>TSV 断面</strong>・手元 SVL/JACET との<strong>任意照合列</strong>で、「どこを人が見ればよいか」を絞る。</p></div><p class='text-sm text-gray-600 mt-2'>再現性・オープンさを優先し、品質は<strong>コード・ログ・スポットチェック</strong>の組み合わせ、というスタンス。</p>",
+            "imgDesc": "Human magnifying glass over a narrow column of a large spreadsheet",
+            "imageSrc": "images/slide-08.png"
         },
         {
-            "range": [69, 76],
+            "range": [
+                69,
+                76
+            ],
             "title": "何がオープンで、何がそうでないか",
-            "content": "<div class='bubble'><p class='text-sm' style='margin:0;'>オープン：手順・スクリプト・許される範囲のデータに基づく生成物。</p></div><p class='text-sm mt-2 text-center'>他人の教材全文は同梱しない → パスを渡して各自照合</p>",
-            "imgDesc": "Open padlock on code repo, closed padlock on third-party textbook stack"
+            "content": "<div class='bubble'><p class='text-base' style='margin:0;'>🔓 <strong>オープン</strong>：手順・スクリプト・利用条件の許す範囲のデータ（OANC / NGSL 等）に基づく生成物。</p></div><div style='display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px;'><div class='bubble p-2'><p class='text-sm font-bold' style='margin:0; color:#6b7280;'>同梱しない</p><p class='text-base' style='margin:6px 0 0;'>他人の教材<strong>全文</strong></p></div><div class='bubble bubble-accent p-2'><p class='text-sm font-bold' style='margin:0;'>照合の形</p><p class='text-base' style='margin:6px 0 0;'>手元ライセンスの範囲で教材を置き、<strong>パスを渡して各自照合</strong></p></div></div><p class='text-sm text-center text-gray-600 mt-2'>データの主権を学習者・開発者の手に近づける —— 「なぜこの語がここか」を <strong>git とドキュメント</strong>で追えるようにする。</p>",
+            "imgDesc": "Open padlock on code repo, closed padlock on third-party textbook stack",
+            "imageSrc": "images/slide-09.png"
         },
         {
-            "range": [77, 79],
+            "range": [
+                77,
+                79
+            ],
             "title": "次回へ",
-            "content": "<div class='text-center space-y-4'><p class='text-lg'>本日はありがとうございました。</p><div class='bubble bubble-accent inline-block'><p class='text-sm font-bold' style='margin:0;'>次回：Step 1・2 のパラメータと監査 GUI 寄り</p></div></div>",
-            "imgDesc": "Simple next arrow on timeline, soft blue, minimalist"
+            "content": "<div class='text-center space-y-4'><p class='text-2xl'>🙏 本日はありがとうございました。</p><div class='bubble bubble-accent inline-block'><p class='text-base font-bold' style='margin:0;'>次回：Step 1・2 の<strong>パラメータ</strong>と<strong>監査 GUI</strong> 寄り</p></div><p class='text-sm text-gray-500'>実装・画面の見方を中心に深掘りする予定です。</p></div>",
+            "imgDesc": "Simple next arrow on timeline, soft blue, minimalist",
+            "imageSrc": "images/slide-10.png"
         }
     ]
 }
